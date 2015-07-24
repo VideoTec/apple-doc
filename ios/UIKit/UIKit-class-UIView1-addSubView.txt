@@ -1,0 +1,19 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/#//apple_ref/occ/instm/UIView/addSubview:
+
+established[英][ɪˈstæblɪʃt] [美][əˈstæblɪʃt]
+adj.已建立的；已设立的；已制定的；确定的
+v.建立( establish的过去式和过去分词)；确定；[植物学]使（植物）定植；使成为
+
+establish[英][ɪˈstæblɪʃ] [美][ɪˈstæblɪʃ]
+vt.建立，创建；确立或使安全；使被安排好；使成为
+
+Adds a view to the end of the receiver’s list of subviews.
+
+- (void)addSubview:(UIView *)view
+
+view
+The view to be added. After being added, this view appears on top of any other subviews.
+
+This method establishes a strong reference to view and sets its next responder to the receiver, which is its new superview.
+
+Views can have only one superview. If view already has a superview and that view is not the receiver, this method removes the previous superview before making the receiver its new superview.

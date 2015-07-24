@@ -1,0 +1,46 @@
+#import "Foo.h"
+
+
+@implementation Foo {
+  NSString *_bar;
+  NSString *_foo;
+}
+
++ (instancetype)fooWithBar:(NSString *)bar {
+  return [[[self alloc] initWithBar:bar] autorelease];
+}
+
+// Must always override super's designated initializer.
+- (instancetype)init {
+  return [self initWithBar:nil];
+}
+
+- (instancetype)initWithBar:(NSString *)bar {
+  if ((self = [super init])) {
+    _bar = [bar copy];
+    _bam = [[NSString alloc] initWithFormat:@"hi %d", 3];
+  }
+  return self;
+}
+
+- (void)dealloc {
+  [_bar release];
+  [_bam release];
+  [super dealloc];
+}
+
+- (NSString *)bar {
+  return _bar;
+}
+
+- (void)setBar:(NSString *)bar {
+  [_bar autorelease];
+  _bar = [bar copy];
+}
+
+- (BOOL)doWorkWithBlah:(NSString *)blah {
+  // ...
+  return NO;
+}
+
+@end

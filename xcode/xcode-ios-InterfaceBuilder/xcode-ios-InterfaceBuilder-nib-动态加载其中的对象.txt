@@ -1,0 +1,9 @@
+http://www.ifun.cc/blog/2014/02/22/ioskai-fa-zhi-xibji-qiao-jie-shao/
+iOS开发之xib技巧介绍
+
+NSArray *views = [[NSBundle mainBundle] loadNibNamed:@"View1" owner:nil options:nil]; //&1
+UIView *v = [views lastObject];
+CGRect r = v.frame;
+r.origin.y += 80;
+v.frame = r;
+[self.view addSubview:v];

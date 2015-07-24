@@ -1,0 +1,47 @@
+Interface Builder（缩写：IB），
+是用于苹果公司Mac OS X操作系统的软件开发程序，是Xcode套件的一部分。
+Cocoa和Carbon开发者可以使用Interface Builder来创建和修改应用程序的图形用户界面。
+其数据以XML的形式被储存在.xib文件中。
+在过去，其数据则是储存在.nib文件中的，nib是“NeXT Interface Builder”的缩写。
+
+Interface Builder是继承自NeXTSTEP的开发套件的。
+OpenStep的开发也使用了IB的一个版本，
+GNUStep则使用一个非常类似的，称为Gorm的工具。
+
+2008年3月27日，随着iPhone SDK Beta 2的发布，IB开始提供对iPhone程序开发的支持，允许开发者使用IB设计iOS应用程序的界面
+
+1988年，IB作为NeXTSTEP 0.8的一部分首次出现。
+它最初由Jean-Marie Hullot所设计和编写，计划用于Lisp（即Expertelligence出品的ExperLisp）。
+它是首批可以使用鼠标放置按钮，选单，视窗等控件的商业软件之一
+
+IB向Objective-C开发者提供了包含一系列用户界面对象的工具箱，
+这些对象包括文本框，数据表格，滚动条，弹出式菜单等控件。
+IB的工具箱是可扩展的，也就是说，所有开发者都可以开发新的对象，并将其加入IB的工具箱中。
+
+开发者只需要从工具箱中简单的向窗口或菜单中拖拽控件即可完成界面的设计。
+然后，用连线将
+控件可以提供的“动作”（Action）、控件对象分别和
+应用程序代码中对象“方法”（Method）、对象“接口”（Outlet）连接起来，就完成了整个创建工作。
+与其它图形用户界面设计器，
+例如Microsoft Visual Studio相比，这样的过程减小了MVC模式中控制器和视图两层的耦合，提高了代码质量。
+
+在代码中，使用IBAction标记接受动作的方法，而用IBOutlet标记对象接口[1]。
+
+IB将应用程序界面保存为捆绑，其中包含了界面对象及其与应用程序的关系。
+这些对象被序列化为XML文件或NeXT风格的属性列表文件，扩展名为.nib。
+在应用程序运行时，对应的NIB对象调入内存，与其应用程序的二进制代码联系起来。
+
+与绝大多数其余GUI设计系统不同，
+IB不是生成代码以在运行时产生界面（如Glade，Codegear的C++ Builder所做的），
+而是采用与代码无关的机制，通常称为 freeze dried 。
+freeze dried[英][fri:z draid] [美][friz draɪd] 冻干的
+“
+Interface Builder 把窗口、菜单栏以及窗口上的各种控件的对象都“冻结”在了一个 NIB文档里面了；
+程序运行时，这些对象将会“苏醒”
+”
+
+从IB 3.0开始，加入了一种新的文件格式，其扩展名为.xib。
+这种格式与原有的格式功能相同，但其为单独文件而非捆绑，以便于版本控制系统的运作，以及类似diff的工具的处理。
+
+2010年6月的WWDC上，苹果宣布在Xcode4中会将IB和Xcode整合在一起，
+即在Xcode中直接提供编辑图形界面的功能。这意味着随着Xcode 4的发布，IB在Mac OS X中将不再作为单独的程序提供

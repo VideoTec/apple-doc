@@ -1,0 +1,13 @@
+1）不用import头文件
+2）Cocoa支持在运行时向某个类添加方法
+
+http://blog.csdn.net/abel_tu/article/details/12422743
+关于performSelector调用和直接调用区别
+
+下面两段代码都在主线程中运行，我们在看别人代码时会发现有时会直接调用，有时会利用performSelector调用，今天看到有人在问这个问题，我便做一下总结，
+[delegate imageDownloader:self didFinishWithImage:image];
+[delegate performSelector:@selector(imageDownloader:didFinishWithImage:) withObject:self withObject:image];
+
+1、performSelector是运行时系统负责去找方法的，在编译时候不做任何校验；如果直接调用编译是会自动校验。如果imageDownloader：didFinishWithImage:image：不存在，那么直接调用 在编译时候就能够发现（借助Xcode可以写完就发现），但是使用performSelector的话一定是在运行时候才能发现（此时程序崩溃）；Cocoa支持在运行时向某个类添加方法，即方法编译时不存在，但是运行时候存在，这时候必然需要使用performSelector去调用。所以有时候如果使用了performSelector，为了程序的健壮性，会使用检查方法
+- (BOOL)respondsToSelector:(SEL)aSelector;
+2、直接调用方法时候，一定要在头文件中声明该方法的使用，也要将头文件import进来。而使用performSelector时候， 可以不用import头文件包含方法的对象，直接用performSelector调用即可。

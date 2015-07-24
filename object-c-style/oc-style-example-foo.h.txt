@@ -1,0 +1,27 @@
+#import <Foundation/Foundation.h>
+
+// A sample class demonstrating good Objective-C style. All interfaces,
+// categories, and protocols (read: all non-trivial top-level declarations
+// in a header) MUST be commented. Comments must also be adjacent to the
+// object they're documenting.
+//
+// (no blank line between this comment and the interface)
+@interface Foo : NSObject
+
+// Returns an autoreleased instance of Foo. See -initWithBar: for details
+// about |bar|.
++ (instancetype)fooWithBar:(NSString *)bar;
+
+// Designated initializer. |bar| is a thing that represents a thing that
+// does a thing.
+- (instancetype)initWithBar:(NSString *)bar;
+
+// Gets and sets |_bar|.
+- (NSString *)bar;
+- (void)setBar:(NSString *)bar;
+
+// Does some work with |blah| and returns YES if the work was completed
+// successfully, and NO otherwise.
+- (BOOL)doWorkWithBlah:(NSString *)blah;
+
+@end

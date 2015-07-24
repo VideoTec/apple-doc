@@ -1,0 +1,17 @@
+IBOutlet关键字是Interface Builder识别插座变量的标志
+
+outlet：
+可以理解为一个指针指向了nib中的控件对象，我们可以通过输出口来操作这个控件。
+
+http://my.oschina.net/mjRao/blog/66214 连线
+那么为什么要做outlet与file's owner 之间的连线呢？
+这里file's owner 看做我们定义的类，即我们的代码，里面写了哪些需要outlet的控件，
+但是，具体它对应与界面上哪个控件呢，这个对应关系是没有的，于是我们通过
+file's owner 和 label之间的连线，确定了 我们代码中的outlet控件与 xib中的控件的
+对应
+
+在 viewcontrol中 定义了 ibaction，即 事件响应的代码，却未将其与
+实际的 ui的事件相关联，于是我们通过连线，将事件与代码中的响应处理对应起来。
+
+outlet连线：control点击file's owner 拖拉到 相应控件 弹出菜单，选择 outlet名称
+action连线：点击控件，在其事件列表中选择要处理的，拖拉到file's owner

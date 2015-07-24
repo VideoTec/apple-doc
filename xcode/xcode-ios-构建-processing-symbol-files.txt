@@ -1,0 +1,11 @@
+processing symbol files
+
+http://stackoverflow.com/questions/19187857/processing-symbol-files-in-xcode
+I was wondering if anyone could tell me what is Xcode actually doing 
+when it says: "Processing Symbol Files" after plugging in your device?
+
+It downloads the (debug) symbols from the device, so it is possible to debug on devices with that specific iOS version and also to symbolicate crash reports that happened on that iOS version.
+
+Since symbols are cpu specific, the above only works if you have imported the symbols not only for a specific iOS device but also for a specific CPU type. The currently CPU types needed are armv7 (e.g. iPhone 4, iPhone 4s), armv7s (e.g. iPhone 5) and arm64 (e.g. iPhone 5s).
+
+So if you want to symbolicate a crash report that happened on an iPhone 5 with armv7s and only have the symbols for armv7 for that specific iOS version, Xcode won't be able to (fully) symbolicate the crash report.

@@ -1,0 +1,58 @@
+p12证书和mobileprovision证书是干嘛用
+
+这个是证书申请号后导出的，给其他人装上就可以签名真机联调
+
+发布用的 mobileprovision
+测试用的 mobileprovision
+adhoc的  mobileprovision  +  单独的ipa安装文件
+必须在手机上安装对应的 mobileprovision 才可以验证
+如果要在真机上调试需要一个Provision Profile
+Provision Profile中信息：开发者证书（公有密钥）、开发者Apple ID、一系列设备ID
+
+如何不用itunes 和 xcode  
+通过无线的方式发送给测试设备 
+ios7的时候可以通过邮件把 .mobileprovision 文件直接发送给测试设备  
+测试设备点开直接安装
+
+--------------------------------------------------------------
+http://blog.csdn.net/gf771115/article/details/7902461
+--------------------------------------------------------------
+授权文件（.mobileprovision）
+签名证书文件（.cer）
+
+使用开发者授权是一套完整而且相对合理的流程，它可以分为下面几个阶段：
+授权设备，将开发者授权与指定的设备绑定在一起，使得这些设备可以自由安装开发者发布的IPA。
+生成授权文件.mobileprovision，这个文件会被打包进入IPA，实现设备与授权开发帐号的绑定。
+生成证书文件.p12，这个文件也会被打包进入IPA，实现应用发行商的签名以及身份验证
+
+开发者授权系统还提供了开发（Development）和发布（Distribution）两个不同的渠道。
+开发测试的时候需要设备的绑定而实现在设备上单独安装IPA，
+发布的时候则不需要绑定设备。
+所以开发与发布需要使用不同的.mobileprovision与.cer文件。
+
+--------------------------------------------------------------
+http://blog.csdn.net/cwf19860527/article/details/8589092
+--------------------------------------------------------------
+iOS是一个非常封闭的系统。
+授权文件(.mobileprovision)和签名证书文件(.cer)的存在就是为了验证身份信息。
+一般情况下，比如ssh登陆或者scp需要私钥、公钥对即可，iOS也是基本采取这种方法。
+
+首先注册apple开发者，然后花美刀购买一个.cer开发证书，这个开发证书可以理解为私钥。
+这个私钥只能你自己使用，如果有多台开发机器，
+可以先把cer证书导出为.p12文件（可以设置密码），
+在第二台开发机上像导入cer一样导入这个p12文件即可。
+一个cer证书可以对应多个程序ID。
+
+然后是公钥。mobileprovision 文件包括
+程序ID，
+公钥以及
+DeviceID这三个主要信息。
+在开发机器上，build需要 cer 和 mobileprovision（的公钥，程序ID）匹配，才能生成最后的app程序。
+
+在手机上安装程序，除了需要私钥公钥匹配，还需要DeviceID匹配，
+手机的UDID必须在 mobileprovision 的DeviceID列表中才可以。
+程序中包括私钥信息，要想匹配，必须在手机上安装对应的 mobileprovision 才可以验证公钥私钥。
+
+所以，如果想要开发build程序，必须安装cer证书和mobileprovision（用到程序ID和公钥信息）。
+如果想要在手机上直接安装程序（非AppStore安装），
+必须在手机上安装mobileprovision（程序ID，DeviceID以及公钥信息）。

@@ -1,0 +1,3 @@
+readwrite 是默认行为
+
+readlonly 只生成 getter 方法，不生成 setter 方法

@@ -1,0 +1,72 @@
+inspector[英][ɪnˈspektə(r)] [美][ɪnˈspɛktɚ]
+n.检查员；（英国公共汽车或火车上的）查票员；（警察）巡官；检阅官
+
+identity[英][aɪˈdentəti] [美][aɪˈdɛntɪti]
+n.身份；[逻]同一性；个性；[数]恒等（式）
+
+https://developer.apple.com/library/mac/recipes/xcode_help-general/Chapters/AbouttheUtilityArea.html#//apple_ref/doc/uid/TP40010548-CH8-SW1
+About the Utilities Area
+
+Use the utilities area to view and access Quick Help and other inspectors and to use ready-made resources in your project.
+
+-------------------------------------
+分成二个部分
+-------------------------------------
+第一部分：Inspector pane
+
+File inspector: 
+View and manage metadata for a file, 
+such as its name, type, path, location within your project, and so forth.
+
+Quick Help: 
+View details about a symbol, 
+including a concise description, where and how it is declared, its scope, 
+the parameters it takes, and its platform and architecture availability.
+
+Interface Builder 附加的 inspectors 窗口：
+Additional inspectors are available in some editors; for example, Interface Builder offers these:
+
+Identity inspector: 
+View and manage metadata for an object, 
+such as its class name, accessibility information, runtime attributes, label, and so forth.
+
+Attributes inspector: 
+Configure attributes of the selected interface object. 
+The attributes available are specific to the selected object. 
+For example, some text field attributes include text alignment and color, border type, and edibility.
+
+Size inspector: 
+Specify characteristics such as the initial size and position, 
+minimum and maximum sizes, and autosizing rules for an interface object.
+
+Connections inspector: 
+View the outlets and actions for an interface object, 
+make new connections, and break existing connections.
+
+Bindings inspector: 
+Create, view, and configure bindings for view objects.
+
+Effects inspector: 
+Specify settings for animation, alpha channel, transitions, 
+and other visual characteristics of a selected object.
+
+SKNode inspector: 
+Specify attributes for a SpriteKit node such as a particle emitter, scene, or body in a scene.
+
+第二部分：Library pane (library bar + filter bar)
+
+File templates: （向工程添加新文件）
+templates for common types of files and code constructs. 
+To use a template, drag it from the library to the project navigator.
+
+Code snippets: 
+short pieces of source code for use in your software. 
+To use one, drag it directly into your source code file.
+
+Objects:  （控件列表）
+interface objects. 
+To use one, drag it directly into your nib file in the Interface Builder editor window.
+
+Media files:  （图片，声音，等等资源文件）
+graphics, icons, and sound files. 
+To use one, drag it directly to your nib file in the Interface Builder editor window.

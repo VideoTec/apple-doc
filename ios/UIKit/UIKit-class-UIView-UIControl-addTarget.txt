@@ -1,0 +1,38 @@
+Adds a target and action for a particular event (or events) to an internal dispatch table.
+
+- (void)addTarget:(id)target
+           action:(SEL)action
+ forControlEvents:(UIControlEvents)controlEvents
+ 
+You may call this method multiple times, and you may specify multiple target-action pairs for a particular event. 
+The action message may optionally include the sender and the event as parameters, in that order.
+
+When you call this method, target is not retained.
+
+例子
+[filterButton addTarget:self action:@selector(filter:) forControlEvents:UIControlEventTouchUpInside];
+
+enum {
+   UIControlEventTouchDown           = 1 <<  0,
+   UIControlEventTouchDownRepeat     = 1 <<  1,
+   UIControlEventTouchDragInside     = 1 <<  2,
+   UIControlEventTouchDragOutside    = 1 <<  3,
+   UIControlEventTouchDragEnter      = 1 <<  4,
+   UIControlEventTouchDragExit       = 1 <<  5,
+   UIControlEventTouchUpInside       = 1 <<  6,
+   UIControlEventTouchUpOutside      = 1 <<  7,
+   UIControlEventTouchCancel         = 1 <<  8,
+   
+   UIControlEventValueChanged        = 1 << 12,
+   
+   UIControlEventEditingDidBegin     = 1 << 16,
+   UIControlEventEditingChanged      = 1 << 17,
+   UIControlEventEditingDidEnd       = 1 << 18,
+   UIControlEventEditingDidEndOnExit = 1 << 19,
+   
+   UIControlEventAllTouchEvents      = 0x00000FFF,
+   UIControlEventAllEditingEvents    = 0x000F0000,
+   UIControlEventApplicationReserved = 0x0F000000,
+   UIControlEventSystemReserved      = 0xF0000000,
+   UIControlEventAllEvents           = 0xFFFFFFFF 
+};

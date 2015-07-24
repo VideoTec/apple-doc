@@ -1,0 +1,6 @@
+identity[英][aɪˈdentəti] [美][aɪˈdɛntɪti]
+n.身份；[逻]同一性；个性；[数]恒等（式）
+
+Identity inspector: 
+View and manage metadata for an object, 
+such as its class name, accessibility information, runtime attributes, label, and so forth.

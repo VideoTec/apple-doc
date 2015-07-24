@@ -1,0 +1,54 @@
+#import <UIKit/UIKit.h>
+
+This function is called in the main entry point to 
+create the application object and    创建一个 UIAppication 实例（单例）
+create the application delegate and 
+set up the event cycle.
+
+int UIApplicationMain ( int argc, char *argv[], NSString *principalClassName, NSString *delegateClassName );
+
+--------------------------
+Parameters
+--------------------------
+
+argc
+The count of arguments in argv; this usually is the corresponding parameter to main.
+
+argv
+A variable list of arguments; this usually is the corresponding parameter to main.
+
+principal [英][ˈprɪnsəpl] [美][ˈprɪnsəpəl]
+adj.最重要的；主要的；资本的；本金的
+n.首长，负责人；主要演员，主角；[法]委托人，当事人；本金
+principalClassName 
+The name of the UIApplication class or subclass. 
+If you specify nil, UIApplication is assumed.
+
+delegate[英][ˈdelɪgət] [美][ˈdɛlɪˌɡet]
+n.代表，代表团成员
+vt.委派代表；授权给；[法律]债务转移
+delegateClassName
+The name of the class from which the application delegate is instantiated. 
+If principalClassName designates a subclass of UIApplication, you may designate the subclass as the delegate; 
+the subclass instance receives the application-delegate messages. 
+Specify nil if you load the delegate object from your application’s main nib file.
+
+--------------------------
+Return Value
+--------------------------
+Even though an integer return type is specified, this function never returns. 
+When users exits an iOS application by pressing the Home button, the application moves to the background.
+
+--------------------------
+Discussion
+--------------------------
+This function instantiates the application object from the principal class and instantiates the delegate (if any) from the given class and sets the delegate for the application. It also sets up the main event loop, including the application’s run loop, and begins processing events. 
+
+If the application’s Info.plist file specifies a main nib file to be loaded, 
+by including the NSMainNibFile key and a valid nib file name for the value, 
+this function loads that nib file.
+
+despite[英][dɪˈspaɪt] [美][dɪˈspaɪt]
+prep.不管；尽管（自己）不愿意；不在乎；虽有
+Despite the declared return type, this function never returns. 
+For more information on how this function behaves, see “Core App Objects” in App Programming Guide for iOS.

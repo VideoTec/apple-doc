@@ -1,0 +1,8 @@
+delegate[英][ˈdelɪgət] [美][ˈdɛlɪˌɡet]
+n.代表，代表团成员
+vt.委派代表；授权给；[法律]债务转移
+delegateClassName
+The name of the class from which the application delegate is instantiated. 
+If principalClassName designates a subclass of UIApplication, you may designate the subclass as the delegate; 
+the subclass instance receives the application-delegate messages. 
+Specify nil if you load the delegate object from your application’s main nib file.

@@ -1,0 +1,56 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intf/UIApplicationDelegate
+
+The following methods are called when state transitions occur. 
+For information about what to do in response to each transition, see the method descriptions:
+
+Launch time:
+application:willFinishLaunchingWithOptions:
+application:didFinishLaunchingWithOptions:
+
+Transitioning to the foreground—
+applicationDidBecomeActive:
+
+Transitioning to the background:
+applicationDidEnterBackground:
+
+resign[英][rɪˈzaɪn] [美][rɪ'zaɪn] v.辞职；放弃；屈从；勉强接受
+Transitioning to the inactive state
+applicationWillResignActive: (Called when leaving the foreground state.)
+applicationWillEnterForeground: (Called when transitioning out of the background state.)
+
+Termination:
+applicationWillTerminate: (Called only when the app is running. This method is not called if the app is suspended.)
+
+The specific tasks you perform during a given state transition are 
+dependent upon your app and its capabilities. 
+For tips and guidance about what to do during state transitions, see App Programming Guide for iOS.
+
+------------------------------------
+State Transitions - APP 运行状态
+------------------------------------
+One of the main jobs of the app delegate is to 
+respond to state transitions reported by the system. 
+
+For every state change that occurs, 
+the system calls the appropriate methods of the app delegate. 
+
+Each state has different rules 
+that govern how the app should is expected to behave and 
+the app delegate methods must adjust the behavior of the app accordingly. 
+
+Table 1 lists the possible states of an app and the high-level expectations. 
+Figure 1 shows how an app moves from one state to another.
+
+状态有：
+
+Not Running
+
+Foregound 分成两个状态
+Inactive  -  not receiving events
+Active    -  receiving events
+
+Background
+An app in the background state should do as little work as possible. 
+
+Suspended - The app is in memory but is not executing code.
+

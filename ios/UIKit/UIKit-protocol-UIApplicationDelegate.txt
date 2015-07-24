@@ -1,0 +1,59 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intf/UIApplicationDelegate
+
+singleton[英][ˈsɪŋgltən] [美][ˈsɪŋɡəltən]
+n.一个，独身，单独
+interact[英][ˌɪntərˈækt] [美][ˌɪntɚˈækt]
+v.相互作用；互相影响；互动
+alongside[英][əˌlɒŋˈsaɪd] [美][əˌlɔ:ŋˈsaɪd]
+adv.在…的侧面；在…旁边；与…并排
+prep.在…旁边；横靠；傍着
+
+用于响应 应用程序 状态的变化
+The UIApplicationDelegate protocol defines methods that are called 
+by the singleton UIApplication object in response to important events in the lifetime of your app. 
+The app delegate works alongside the app object to 
+ensure your app interacts properly with the system and with other apps. 
+Specifically, the methods of the app delegate give you a chance to respond to important changes. 
+For example, 
+you use the methods of the app delegate to respond to state transitions, 
+such as 
+when your app moves from foreground to background execution, and 
+to respond to incoming notifications. 
+In many cases, 
+the methods of the app delegate are the only way to receive these important notifications.
+
+Xcode provides an app delegate class for every new project, 
+so you do not need to define one yourself initially. 
+When your app launches, 
+UIKit automatically creates an instance of the app delegate class provided by Xcode and 
+uses it to execute the first bits of custom code in your app. 
+All you have to do is take the class that Xcode provides and add your custom code.
+
+The app delegate is effectively the root object of your app. 
+Like the UIApplication object itself, 
+the app delegate is a singleton object and is always present at runtime.
+Although the UIApplication object does most of the underlying work to manage the app, 
+you decide your app’s overall behavior by providing appropriate implementations of the app delegate’s methods. 
+Although most methods of this protocol are optional, you should implement most or all of them.
+
+这个代理类，起到下面的关键作用
+----------------------------------------------------------
+The app delegate performs several crucial roles:
+----------------------------------------------------------
+crucial[英][ˈkru:ʃl] [美][ˈkruʃəl]
+adj.关键性的，极其显要的；决定性的；十字形的
+
+It contains your app’s startup code.
+
+It responds to key changes in the state of your app. Specifically, it responds to both temporary interruptions and to changes in the execution state of your app, such as when your app transitions from the foreground to the background.
+
+It responds to notifications originating from outside the app, such as remote notifications (also known as push notifications), low-memory warnings, download completion notifications, and more.
+
+It determines whether state preservation and restoration should occur and assists in the preservation and restoration process as needed.
+
+It responds to events that target the app itself and are not specific to your app’s views or view controllers.
+
+You can use it to store your app’s central data objects or any content that does not have an owning view controller.
+
+For more information about the role of the app delegate and how it fits into the app architecture, see App Programming Guide for iOS. For more information about the UIApplication singleton class, see UIApplication Class Reference.
+

@@ -1,0 +1,35 @@
+在ARC之前，我们是用@property指令中的assign/retain/copy参数来告诉编译器，如何管理这些属性的内存。
+
+用了ARC之后，这些参数就作废了，改用weak/strong这两个参数。
+
+强引用
+强引用是对某对象的引用，并且能阻止它被回收。换句话说，强引用创建了一个所有关系。在ARC之前，我们这么写:
+// Non-ARC Compliant Declaration
+@property(retain) NSObject *obj;
+
+在ARC下，我们需要这么写，以确保当前实例获得被引用对象的所有权(主人不被回收，它也不能被回收)。
+// ARC Compliant Declaration
+@property(strong) NSObject *obj;
+
+弱引用
+弱引用是对某对象的引用，但不能阻止它被回收。换句话说，弱引用并不会创建所有关系。在ARC之前，我们这么写:
+// Non-ARC Compliant Declaration
+@property(assign) NSObject *parentObj;
+
+在ARC下，我们需要这么写，以确保当前实例没有获得被引用对象的所有权(一般来说，子对象不应该拥有父对象，这时可以用弱引用)。
+// ARC Compliant Declaration
+@property(weak) NSObject *parentObj;
+
+问题是 copy 属于那种？
+copy 和原来基本一样..copy一个对象并且为其创建一个strong指针
+对于NSString对象，
+在MRC时代很多人喜欢用copy，
+而ARC时代一般喜欢用strong…(我也不懂为什么..求指教)  16:54 2015/6/25 这种说法是不正确的，片下面的解释
+http://www.zhihu.com/question/20102376
+NSString为何要用copy？而不是strong？
+据stackOverflow上的说法,是为了防止mutable string被无意中修改, 
+NSMutableString是NSString的子类, 因此NSString指针可以持有NSMutableString对象
+http://stackoverflow.com/questions/11249656/should-an-nsstring-property-under-arc-be-strong-or-copy
+It is still recommended to copy because 
+you want to avoid something passing a mutable string and then changing it without you knowing. 
+A copy guarantees that the string you have will not change.

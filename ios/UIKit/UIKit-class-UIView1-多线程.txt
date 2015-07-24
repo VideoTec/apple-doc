@@ -1,0 +1,14 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/
+
+manipulation[英][məˌnɪpjʊ'leɪʃn] [美][məˌnɪpjʊˈleʃən]
+n.（熟练的）操作；操纵；控制；（对账目等的）伪造
+
+Threading Considerations
+Manipulations to your application’s user interface must occur on the main thread. 
+Thus, you should always call the methods of the UIView class from code running 
+in the main thread of your application. 
+
+The only time this may not be strictly necessary is 
+when creating the view object itself 
+but all other manipulations should occur on the main thread.
+

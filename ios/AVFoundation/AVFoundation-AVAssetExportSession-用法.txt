@@ -1,0 +1,20 @@
+http://blog.csdn.net/mirage520/article/details/7795794
+
+- (void) lowQuailtyWithInputURL:(NSURL*)inputURL
+                      outputURL:(NSURL*)outputURL
+                   blockHandler:(void (^)(AVAssetExportSession*))handler
+{
+    AVURLAsset *asset = [AVURLAsset URLAssetWithURL:inputURL opti*****:nil];
+    AVAssetExportSession *session = 
+       [[AVAssetExportSession alloc] initWithAsset:asset
+                                        presetName:AVAssetExportPresetMediumQuality];
+    session.outputURL = outputURL;
+    session.outputFileType = AVFileTypeQuickTimeMovie;
+    [session exportAsynchronouslyWithCompletionHandler:^(void)
+     {
+         handler(session);
+     }];
+}
+
+给一个官方的例子，
+https://developer.apple.com/library/ios/#samplecode/RosyWriter/Introduction/Intro.html#//apple_ref/doc

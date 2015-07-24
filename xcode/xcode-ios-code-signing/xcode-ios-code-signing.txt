@@ -1,0 +1,76 @@
+http://www.cnblogs.com/andyque/archive/2011/08/30/2159086.html
+
+Code signing 对你来说，最主要的意义就是它能让你的App在设备上运行。
+不管是你自己的设备，甲方客户的，还是在App store上购买你的消费者
+
+Apple对其设备有严格的使用限制，
+任何应用程序都必须经过iTunes Store下载安装，要么直接从设备里下载，要么从电脑中通过iTunes下载后同步到设备中。
+所以没有经过破解的设备是没有办法直接安装IPA文件的。
+
+但是Apple也提供了一套面向开发者的机制，
+让他们可以在指定的设备上安装IPA文件来测试和开发，
+这个机制的核心就是开发者授权。
+我前面介绍的申请流程就是申请获得一个可以在设备中安装运行IPA文件的开发者授权
+
+---------------------------------
+私钥 Private Key
+---------------------------------
+在Mac OS X 以后，key由一个叫做 Keychain的app来管理。
+你可以在 Application\Utilities 中找到。
+运行Keychain （选择 登录 - 密钥），你可以看到在你的名下有哪些公钥和私钥
+私钥 会列出 其签发的证书
+
+---------------------------------
+UDID
+---------------------------------
+
+　　UDID （Unique Device Identifier）是区分物理设备的唯一标识。
+
+　　所有你的iPhone肯定有一个与众不同的UDID，包括你的iPad等等。
+
+　　通常，UDID会是一个40位十六进制字符串
+
+如果你的设备连到Xcode的机器上，你可以在windows -> Organizer(在 device) 中看到UDID
+
+---------------------------------
+Certificate 认证
+---------------------------------
+
+　　认证，就是你的个人开发者认证，或者更华丽地说：“Apple Worldwide Developer Relations Certification Authority Certificate”（这不翻译了），
+
+　　这个本质上就是一些代表着信任-授权的数据而已。
+
+　　获取一个认证，你需要子啊Keychain Access中生成一个 Certificate Signing Request，并把它发给Apple。这会创建一对公钥-私钥（如果还没有的话）。
+
+　　Apple收到后会验证信息，然后给你创建一个认证。
+
+---------------------------------
+App ID  -  Bundle Identifier
+---------------------------------
+Product Name 和 Company Identifier
+
+两者合起来，就Bundle Identifier
+
+对于每一个你要发布的app，你需要到iTunes Developer Center中注册你的App ID
+
+---------------------------------
+Provisioning Profile
+iOS Provisioning Portal 是网上工具，用来注册应用程序ID、注册设备、制作签名证书和创建预置描述文件(provisioning profile)
+---------------------------------
+这个操作，在苹果官网上。
+Apple Developer会员中心。点击图中的iOS Provisioning Portal，进入开发者授权设置系统
+
+把前面讲到的东西合起来：
+App ID （app的唯一标识）
+UDID （在某台设备上运行的唯一标识）
+Certificate （开发者认证）
+就是所谓的Provisioning Profile - 预置描述文件 - *.mobileprovision
+
+Provisioning Profile 
+通过，xcode或者itunes导入到device中，或者打包到一个包含app和profile的.ipa文件中
+通过，iPhone 配置实用工具 导入到设备里（双击 *.mobileprovision 文件就会打开并导入到连接的设置）
+
+---------------------------------
+Build Settings ，往下滚动到 Code Signing
+---------------------------------
+指定 认证

@@ -1,0 +1,24 @@
+----------------------------------------------------------------
+http://stackoverflow.com/questions/14858266/what-is-the-difference-between-in-house-versus-ad-hoc-distribution-for-enterpris
+----------------------------------------------------------------
+Ad-Hoc releases have to be provisioned to specific devices. Your account allows you to register up to 100 devices.
+In-House is for distribution to any company device.
+And anyone registered for the iOS Developer program can make use of Ad Hoc distribution. Only business signed up for the iOS Enterprise program can make use of enterprise distribution. Basically they are two different ways to circulate an app outside of the App Store, with different purposes.
+
+----------------------------------------------------------------
+http://blog.csdn.net/zhaoxy_thu/article/details/17277527
+----------------------------------------------------------------
+
+这两天需要发布一个ipa放到网上供其他人安装，需要用到企业级开发者账号。
+
+首先详细说明一下我们的目标，我们需要发布一个ipa放到网上，所有人（包括越狱及非越狱设备）可以直接通过链接下载安装，
+不需要通过AppStore，也不需要安装任何证书。
+要达到这个目标，就需要企业级开发账号（299刀）。
+企业级开发账号的申请流程在这里就不细说，主要说一下In House ipa的发布流程
+
+-----------------------------------
+最后一步，安装路径：
+-----------------------------------
+将plist在服务器上的地址加到字符串“itms-services://?action=download-manifest&url=”之后，得到：
+itms-services://?action=download-manifest&url=http://59.64.93.213/HelloWorld.plist
+将这个plist地址用iOS设备的safari浏览器打开，就会提示安装应用

@@ -1,0 +1,53 @@
+navigate[英][ˈnævɪgeɪt] [美][ˈnævɪˌɡet]
+vt.驾驶；航行于；使通过
+vi.驾驶；航行
+
+https://developer.apple.com/library/mac/recipes/xcode_help-general/Chapters/AbouttheNavigatorArea.html
+Use the navigator area to view and access different facets of your project
+
+--------------------------
+Use the navigator selector bar to choose the navigator best suited to your current task:
+--------------------------
+Project navigator: 
+Add, delete, group, and otherwise manage files in your project or 
+choose a file to view or edit its contents in the editor area.
+
+Symbol navigator: 
+Browse all the symbols in your project or just those within a scope that you specify.
+
+Search navigator: 
+Use find options and filters to quickly find any string within your projects and frameworks.
+
+Issue navigator: 
+Display issues such as diagnostics, warnings, and errors found when opening, analyzing, and building your project.
+
+Test navigator: 
+Create, manage, and run unit tests, and also review their status.
+
+Debug navigator: 
+Examine the running threads and associated stack information at a specified point or time during program execution.
+
+Breakpoint navigator: 
+Fine-tune breakpoints by specifying characteristics such as a triggering condition, 
+an ignore count, and an action to be performed.
+
+Log navigator: 
+View the history of your build, run, debug, and source control tasks and inspect details of the results.
+
+--------------------------
+navigator 区域分成三段：
+--------------------------
+第一区：navigator bar
+
+第二区：content area
+
+第三区：filter bar
+The filter bar lets you restrict the content that is displayed. 
+
+For example, 
+
+the project navigator has filters for 
+recently edited files, 
+files with source control status, unsaved files, and filename strings. 
+
+The debug navigator has a slider for specifying how much stack information is displayed.

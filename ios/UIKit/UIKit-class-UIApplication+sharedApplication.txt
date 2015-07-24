@@ -1,0 +1,6 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplication_Class/#//apple_ref/occ/clm/UIApplication/sharedApplication
+
++ (UIApplication *)sharedApplication
+The app instance is created in the UIApplicationMain function.
+
+UIApplicationMain 会创建一个 UIApplication 单例，可以使用sharedApplication获得这个实例

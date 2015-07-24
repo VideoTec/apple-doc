@@ -1,0 +1,9 @@
+View Event Notification
+
+The UIViewController class automatically responds to many notifications, 
+such as 
+when the view controller's view is added to or removed from a window's view hierarchy or 
+when it is resized. 
+
+The UIViewController class provides specific methods that are called when these events occur. 
+Subclasses can override these methods to implement specific behaviors.

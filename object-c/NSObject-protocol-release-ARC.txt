@@ -1,0 +1,19 @@
+Automatic Reference Counting, ARC 
+
+自动引用计数(Automatic Reference Counting, ARC)把压在程序员们肩头的管理内存的重担卸除了不少
+http://www.oschina.net/translate/objc-automatic-reference-counting-in-xcode-explained
+
+自动引用计数(ARC)是一个编译器级的功能，它能简化Cocoa应用中对象生命周期管理（内存管理）的流程。
+在ARC出现以前，程序员们只能靠retain/relese/autorelease来确保对象们恰好“坚持”到被需要的那一刻
+Xcode 4.2中，除了语法检查外，Apple的新LLVM编译器（将内存管理的苦差事接了过来）会检查代码，决定何时释放对象
+
+ARC则是一个编译前的步骤，它为我们的代码自动加上retain/release/autorelease语句
+
+------------------------------------
+如果想用ARC，必须服从一些新规则
+------------------------------------
+创建对象的方法跟以前一样，但你一定不能调用retain/release/autorelease/retainCount。也不能通过selector偷偷地调用它们: 禁止使用@selector(retain)和@selector(release)
+
+ARC为自动为你调用，一定不能直接调用dealloc。不过，如果你需要释放实例变量以外的资源，还是可以创建自定义的dealloc方法。但在这个方法里，不要调用[super dealloc]。因为ARC会帮你调
+
+在ARC之前，我们是用@property指令中的assign/retain/copy参数来告诉编译器，如何管理这些属性的内存。用了ARC之后，这些参数就作废了，改用weak/strong这两个参数。

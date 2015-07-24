@@ -1,0 +1,29 @@
+相关的方法
+
+viewWillTransitionToSize:withTransitionCoordinator: method
+supportedInterfaceOrientations method
+preferredInterfaceOrientationForPresentation
+shouldAutorotateToInterfaceOrientation: method
+willRotateToInterfaceOrientation:duration:, 
+willAnimateRotationToInterfaceOrientation:duration:, and 
+didRotateFromInterfaceOrientation: methods
+viewWillLayoutSubviews method
+
+------------------------------------
+Handling View Rotations
+------------------------------------
+
+In iOS 8, all rotation-related methods are deprecated. Instead, rotations are treated as a change in the size of the view controller’s view and are therefore reported using the viewWillTransitionToSize:withTransitionCoordinator: method. When the interface orientation changes, UIKit calls this method on the window’s root view controller. That view controller then notifies its child view controllers, propagating the message throughout the view controller hierarchy.
+
+In iOS 6 and iOS 7, your app supports the interface orientations defined in your app’s Info.plist file. A view controller can override the supportedInterfaceOrientations method to limit the list of supported orientations. Typically, the system calls this method only on the root view controller of the window or a view controller presented to fill the entire screen; child view controllers use the portion of the window provided for them by their parent view controller and no longer participate directly in decisions about what rotations are supported. The intersection of the app's orientation mask and the view controller's orientation mask is used to determine which orientations a view controller can be rotated into.
+
+You can override the preferredInterfaceOrientationForPresentation for a view controller that is intended to be presented full screen in a specific orientation.
+
+In iOS 5 and earlier, the UIViewController class displays views in portrait mode only. To support additional orientations, you must override the shouldAutorotateToInterfaceOrientation: method and return YES for any orientations your subclass supports. If the autoresizing properties of your views are configured correctly, that may be all you have to do. However, the UIViewController class provides additional hooks for you to implement additional behaviors as needed. Generally, if your view controller is intended to be used as a child view controller, it should support all interface orientations.
+
+When a rotation occurs for a visible view controller, the willRotateToInterfaceOrientation:duration:, willAnimateRotationToInterfaceOrientation:duration:, and didRotateFromInterfaceOrientation: methods are called during the rotation. The viewWillLayoutSubviews method is also called after the view is resized and positioned by its parent. If a view controller is not visible when an orientation change occurs, then the rotation methods are never called. However, the viewWillLayoutSubviews method is called when the view becomes visible. Your implementation of this method can call the statusBarOrientation method to determine the device orientation.
+
+NOTE
+
+At launch time, apps should always set up their interface in a portrait orientation. After the application:didFinishLaunchingWithOptions: method returns, the app uses the view controller rotation mechanism described above to rotate the views to the appropriate orientation prior to showing the window.
+

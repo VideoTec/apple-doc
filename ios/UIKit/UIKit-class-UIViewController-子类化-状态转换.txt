@@ -1,0 +1,13 @@
+共四种状态
+Appearing -> Appeared
+Disappearing -> Disappeared
+
+重载事件
+
+ViewWillAppear      Disappeared -> Appearing
+                    Disappearing -> Appearing
+viewDidAppear       Disappearing -> Diesappeared
+
+viewWillDisappear    Appeared -> Disappearing
+                     Appearing -> Disappearing
+viewDidDisappear     Appearing -> Appeared

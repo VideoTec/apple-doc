@@ -1,0 +1,21 @@
+Info.plist 会包含在app包中。
+
+每个application都使用Info.plist文件来存储元信息，
+从名称上也可以判断出Info.plist就是以上提到的“属性列表”
+
+按照约定，属性列表文件的名称就是Info.plist。
+该文件名称时大小写敏感的,并且首字母必须是大写的"I".
+
+IOS用Info.plist来决定
+bundle所显示的icon，当前
+app支持打开的文档类型，等等其它的信息。
+正如以上所提到的，
+Info.plist本身是一种结构化的文本文件，它包含了一些重要的配置信息。
+Info.plist文件多数情况下是以UTF-8进行编码，并且其内部的配置内容其实是以XML格式进行组织。
+XML的根节点是一个词典（dictionary），包含描述bundle各个方面的keys和values。
+系统读取该文件，并获取app的配置信息
+
+在IOS的apps中，
+当新工程创建完毕后，会自动创建一个名为<project>-Info.plist文件， （xcode 6.3.2 新建工程生成的还是 Info.plist）
+该文件位于bundle目录(Supporting Files)的顶部,在工程构建时，
+该文件用以生成Info.plist文件，之后添加至bundle中。

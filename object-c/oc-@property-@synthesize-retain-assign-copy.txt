@@ -1,0 +1,44 @@
+retain[英][rɪˈteɪn] [美][rɪˈten]
+vt.保持；留在心中，记住；雇用；付定金保留
+
+assign[英][əˈsaɪn] [美][əˈsaɪn]
+vt.分派，选派，分配；归于，归属；[法律] 把（财产，权利、利息）从一人转让给另一人；把…编制
+应该有 赋值 的意思
+
+如果只是@property NSString*str;
+则通过@synthesize
+
+自动生成的setter代码为：
+-(void)setStr:(NSString*)value{
+ str=value;
+}
+
+如果是@property(retain)NSString*str;
+则通过@synthesize
+自动生成的setter内容为：
+-(void)setStr:(NSString*)v{
+ if(v!=str){
+   [str release];
+   str=[v retain];
+ }
+}
+
+http://www.cnblogs.com/andyque/archive/2011/08/03/2125728.html
+assign 是默认行为
+
+NSString用copy,
+delegate用assign（且一定要用assign，不要问为什么，只管去用就是了，以后你会明白的），
+非objc数据类型，比如int，float等基本数据类型用assign（默认就是assign），
+而其它objc类型，比如NSArray，NSDate用retain
+
+---------------------------------------------------------
+Retain vs. Copy
+---------------------------------------------------------
+copy： 建立一个索引计数为1的对象，然后释放旧对象 （15:58 2015/6/25 下面又说旧对象没有变化，怎么回事？）
+retain：释放旧的对象，将旧对象的值赋予输入对象，再提高输入对象的索引计数为1 
+
+Copy其实是建立了一个相同的对象，而retain不是： 
+比如一个NSString对象，地址为0×1111，内容为@”STR” 
+Copy到另外一个NSString之后，地址为0×2222，内容相同，新的对象retain为1，旧有对象没有变化 
+retain到另外一个NSString之后，地址相同（建立一个指针，指针拷贝），内容当然相同，这个对象的retain值+1 
+也就是说，retain是指针拷贝，copy是内容拷贝。哇，比想象的简单多了

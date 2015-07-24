@@ -1,0 +1,30 @@
+synthesize[英][ˈsɪnθəsaɪz] [美][ˈsɪnθɪˌsaɪz]
+vt.综合；人工合成；（通过化学手段或生物过程）合成；（音响）合成
+
+在头文件中：
+　　@property int count;
+　　等效于在头文件中声明2个方法：
+　　- (int)count;
+　　- (void)setCount:(int)newCount;
+
+实现文件(.m)中
+　　@synthesize count;
+　　等效于在实现文件(.m)中实现2个方法。
+　　- (int)count
+　　{
+　　return count;
+　　}
+　　-(void)setCount:(int)newCount
+　　{
+　　count = newCount;
+　　}
+
+注意：
+1. 可在实现文件里，自定义 setter/getter 方法。替代 synthesize 自动生成的方法
+2. 用點”.”來存取物件的屬性，注意事项
+3. 错误的 setter 写法
+-(void) setPrice: (int) p
+{
+  // 如果這樣寫的話，會啟動setPrice這個method
+  self.price = p;   無窮迴圈了
+}

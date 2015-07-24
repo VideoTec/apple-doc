@@ -1,0 +1,39 @@
+responder[英][rɪs'pɒndə] [美][rɪ'spɒndə]
+n.回答者；回应者；应答器；响应器
+
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIResponder_Class/
+
+The UIResponder class defines an interface for objects that respond to and handle events. It is the superclass of UIApplication, UIView and its subclasses (which include UIWindow). Instances of these classes are sometimes referred to as responder objects or, simply, responders.
+
+There are two general kinds of events: 
+touch events and motion events. 
+
+The primary event-handling methods for touches are 
+touchesBegan:withEvent:, 
+touchesMoved:withEvent:, 
+touchesEnded:withEvent:, and 
+touchesCancelled:withEvent:. 
+
+lift[英][lɪft] [美][lɪft] vt.& vi.举起，抬起
+The parameters of these methods associate touches with 
+their events—especially touches that are new or have changed—and 
+thus allow responder objects to track and handle the touches 
+as the delivered events progress through the phases of a multi-touch sequence. 
+Any time a finger touches the screen, 
+is dragged on the screen, or lifts from the screen, 
+a UIEvent object is generated. 
+The event object contains UITouch objects for all fingers on the screen or just lifted from it.
+
+iOS 3.0 introduced system capabilities for generating motion events, 
+specifically the motion of shaking the device. 
+The event-handling methods for these kinds of events are 
+motionBegan:withEvent:, 
+motionEnded:withEvent:, and 
+motionCancelled:withEvent:.
+ 
+Additionally for iOS 3.0, 
+the canPerformAction:withSender: method allows responders to 
+validate commands in the user interface while the undoManager property returns 
+the nearest NSUndoManager object in the responder chain.
+
+In iOS 4.0, UIResponder added the remoteControlReceivedWithEvent: method for handling remote-control events.

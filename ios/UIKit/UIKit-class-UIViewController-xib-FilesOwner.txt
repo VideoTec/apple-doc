@@ -1,0 +1,16 @@
+Set the File's Owner placeholder's custom class to your view controller subclass.
+打开MTTestView.xib,在File's Owner设置Class为UIViewController;
+这样就将类和XIB关联起来了
+
+xib 的 FileOwner 是指加载它的 UIViewController 实例
+
+http://stackoverflow.com/questions/15251370/what-is-the-files-owner-in-interface-builder
+Two points to be remembered :
+
+The File owner is the object that loads the nib . Ie. that object which receives the message loadNibNamed: or initWithNibName: .
+So if you want to access any objects in the nib from the object after loading it , you set an outlet to the the file owner .
+So you created a fancy view with lots of buttons , subviews etc . If you want to modify any of these views / objects any time after loading the nib FROM the loading object (usually a view or window controller) you set outlets for these objects to the file owner . Its that simple .
+
+This is the reason why by default all View Controllers or Window Controllers act as file owners and have an outlet to the main window or view object in the nib file , coz duh if you're controlling something you'll definitely need to have an outlet to it so that you can send messages to it .
+
+The reason its called file owner and given a special place is that unlike the other objects in the nib the file owner is external to the nib and is not part of it . It only becomes available when the nib is loaded . So the file owner is a stand-in or proxy for the actual object which will later load the nib . Hope you've understood. I'll clarify any of the points if you ask.

@@ -1,0 +1,15 @@
+http://blog.csdn.net/songrotek/article/details/8477318
+
+在完成iOS开发，准备进行发布之前，我们都希望App能在周围的朋友之间先进行测试，提提意见，
+修改完善之后再发布到App Store上。Apple考虑到这一点，
+因此通过Ad Hoc来实现发布前的用户测试。从另一个角度讲也就是通过Ad Hoc 将未发布的App 给其他人提前免费使用
+
+点击工具栏上的Product ->Archive，对App进行打包
+在Organizer的Archives中就有你打包的App了，点击Distribute，选择 Ad Hoc之后保存，就得到.ipa 文件。
+
+这一步就是把ipa文件和配置文件通过各种方式发送给要测试的朋友的电脑上，
+打开itunes，将配置文件先拉进itunes，然后将ipa文件也拉进去，同步就OK了
+
+Ad-Hoc releases have to be provisioned to specific devices. Your account allows you to register up to 100 devices.
+In-House is for distribution to any company device.
+And anyone registered for the iOS Developer program can make use of Ad Hoc distribution. Only business signed up for the iOS Enterprise program can make use of enterprise distribution. Basically they are two different ways to circulate an app outside of the App Store, with different purposes.

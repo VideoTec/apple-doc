@@ -1,0 +1,25 @@
+When you define a new subclass of UIViewController, you must specify the views to be managed by the controller. A typical view hierarchy consists of a view with flexible bounds—a reference to which is available in the view property of this class—and one or more subviews that provide the actual content. The size and position of the root view is usually determined by another object that owns the view controller and displays its contents. The view controller determines the positions of any subviews it owns based on the size given to its root view by the owning object. A view controller is usually owned by a window or another view controller. If a view controller is owned by a window object, it acts as the window’s root view controller. The view controller’s root view is added as a subview of the window and resized to fill the window. If the view controller is owned by another view controller, then the parent view controller determines when and how the child view controller’s contents are displayed.
+
+The UIViewController class provides built-in support for loading a view controller’s views whenever they are needed. Specifically, views are automatically loaded when the view property is accessed. There are a few ways you can implement your app to load these views:
+
+第一种方法：
+You can specify the views for a view controller using a Storyboard created in Interface Builder. A storyboard contains preconfigured view controllers and their associated views and is the preferred way to develop your app'ss user interface. A key advantage of storyboards is that they can express relationships between different view controllers in your app. For example, you can state that one view controller's contents are contained inside another view controller or that a view controller is displayed as a transition (known as a segue) from another view controller . By allowing you to see the relationships between view controllers, storyboards make it easier to understand your app's behavior at a glance.
+
+At runtime, the view controller uses the storyboard to automatically instantiate and configure its views. Often, the view controller itself is automatically created by segues defined in the storyboard. When you define a view controller's contents using a storyboard, you never directly allocate and initialize the view controller object. Instead, when you need to programmatically instantiate the view controller, you do so by calling the instantiateViewControllerWithIdentifier: method on a UIStoryboard object.
+
+第二种方法：
+You can specify the views for a view controller using a nib file, also created in Interface Builder. Like a storyboard, a nib file allows you to create and configure a set of views. However, you cannot easily create or see the relationships between view controllers using nib files as you can when using storyboards.
+
+To initialize your view controller object using a nib, you use the initWithNibName:bundle: method to specify the nib file used by the view controller. Then, when the view controller needs to load its views, it automatically creates and configures the views using the information stored in the nib file.
+
+第三种方法：
+If you cannot define your views in a storyboard or a nib file, override the loadView method to manually instantiate a view hierarchy and assign it to the view property.
+
+All of these techniques have the same end result, which is to create the appropriate set of views and expose them through the view property.
+
+IMPORTANT
+
+A view controller is the sole owner of its view and any subviews it creates. It is responsible for creating those views and for relinquishing ownership of them at the appropriate times such as when the view controller itself is released. If you use a storyboard or a nib file to store your view objects, each view controller object automatically gets its own copy of these views when the view controller asks for them. However, if you create your views manually, you should never use the same view objects with multiple view controllers.
+
+When creating the views for your view hierarchy, you should always set the autoresizing properties of your views. When a view controller is displayed on screen, its root view is typically resized to fit the available space, which can vary depending on the window's current orientation and the presence of other interface elements such as the status bar. You can configure the autoresizing properties in Interface Builder using the inspector window or programmatically by modifying the autoresizesSubviews and autoresizingMask properties of each view. Setting these properties is also important if your view controller supports both portrait and landscape orientations. During an orientation change, the system uses these properties to reposition and resize the views automatically to match the new orientation. If your view controller supports auto layout and is a child of another view controller, you should call the view's setTranslatesAutoresizingMaskIntoConstraints: method to disable these constraints.
+

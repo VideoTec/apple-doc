@@ -1,0 +1,10 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIControl_Class/index.html#//apple_ref/occ/cl/UIControl
+
+UIControl is the base class for control objects such as buttons and sliders that convey user intent to the application. You cannot use the UIControl class directly to instantiate controls. It instead defines the common interface and behavioral structure for all its subclasses.
+
+The main role of UIControl is to define an interface and base implementation for preparing action messages and initially dispatching them to their targets when certain events occur.
+
+For an overview of the target-action mechanism, see Target-Action in UIKit. For information on the Multi-Touch event model, see Event Handling Guide for iOS.
+
+The UIControl class also includes methods for getting and setting control state¡ªfor example, for determining whether a control is enabled or highlighted¡ªand it defines methods for tracking touches within a control. These tracking methods are overridden by UIControl subclasses.
+

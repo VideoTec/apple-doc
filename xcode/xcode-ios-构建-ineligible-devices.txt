@@ -1,0 +1,10 @@
+ineligible[英][ɪnˈelɪdʒəbl] [美][ɪnˈɛlɪdʒəbəl]
+adj.无入选资格的，不合格的；无被选权
+
+xcode project 选择输出设备时，出现：Ineligible Devices。
+
+http://stackoverflow.com/questions/24039010/ineligible-devices-section-appeared-in-xcode-6-x-x
+http://stackoverflow.com/questions/24039010/ineligible-devices-section-appeared-in-xcode-6-x-x/29538173#29538173
+
+Verify that "iOS Deployment Target" is <= the version of your iDevice.
+（11:04 2015/6/30 就是这个原因）

@@ -1,0 +1,14 @@
+.mm extension stands for Objective-C++, when compiler can process C++ classes.
+.m extension it will be able to compile only C code, without C++ classes.
+
+http://stackoverflow.com/questions/11924325/is-it-a-bad-idea-to-use-mm-files-instead-of-m-just-in-case-i-use-c-later
+
+The main purpose of Objective-C++ is to act as a bridge for Objective-C code that needs to use a C++ library. Thus, in most projects, almost all of the code is plain old Objective-C, with maybe a few .mm files to create a "wrapper" object to talk to the C++ library.
+
+Therefore, it is extremely unlikely that you will need to change significant parts of your code over from Objective-C to Objective-C++. You shouldn't have a lot of file renames in your SCM history.
+
+The main problem with using Objective-C++ everywhere is that you will be following "the road less traveled": 99% of the tutorials you read and open-source code you use and learn from will all be written to be compiled by the Obj-C compiler. Using the Obj-C++ compiler will be mostly the same, and probably won't make a difference most of the time, but you will eventually run into some problem that is due to Obj-C++ being compiled slightly differently, but when you find the bug it won't be obvious, and you'll spend a lot of time trying to diagnose it before you realize that it is because you are using a less well-tested compiler setup.
+
+If you have a lot of C++ experience and find yourself "needing" features from C++ in your code, you probably don't really need them, you probably need to spend a little more time figuring out how to do the equivalent in Objective-C. When in Rome, do as the Romans do.
+
+In general, "just in case" is not a good reason to stray from standard practice. You often wind up spending a lot of effort on something you aren't going to need.

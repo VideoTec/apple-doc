@@ -1,0 +1,13 @@
+//in BaseClass.h
+@interface BaseClass : NSObject{
+@public
+    NSString *_name;
+}
+@property(nonatomic,copy) NSString *name;  // setter/getter 声名
+
+//in BaseClass.m
+@synthesize name = _name;                  // setter/getter 定义
+
+atomic/nonatomic/retain/assign/copy这些只是给编译的建议，编译会首先会到你的代码里面去找，
+如果你定义了相应的getter和setter的话，那么好，用你的。
+如果没有，编译器就会根据atomic/nonatomic/retain/assign/copy这其中你指定的某几个规则去生成相应的getter和setter

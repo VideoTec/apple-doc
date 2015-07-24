@@ -1,0 +1,7 @@
+http://blog.csdn.net/gf771115/article/details/7902461
+
+开发者授权系统还提供了开发（Development）和发布（Distribution）两个不同的渠道。
+
+开发测试的时候需要设备的绑定而实现在设备上单独安装IPA，
+发布的时候则不需要绑定设备。
+所以开发与发布需要使用不同的.mobileprovision与.cer文件。

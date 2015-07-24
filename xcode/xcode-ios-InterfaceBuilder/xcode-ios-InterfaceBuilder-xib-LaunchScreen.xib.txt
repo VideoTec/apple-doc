@@ -1,0 +1,19 @@
+Launch Screen 是 Xcode6/iOS8的新功能
+
+参考
+xcode-ios-target-general-app-icons-and-launch-images.txt
+
+http://blog.shiqichan.com/Launch-Screen-in-iOS-7-and-8/
+目前比较好的方式是使用Launch Image的方式创建各种设备的图片文件，兼容iOS7/8
+使用LaunchScreen.xib，功能更强大，但是仅支持iOS8，可能再过几年可以成为主流方法
+
+http://www.simpleapples.com/2014/10/launchsreen-and-launchimage/
+iOS8中LaunchImage和LaunchScreen的完美结合
+
+iOS8中系统会优先调用LaunchScreen作为启动界面，而
+iOS7不支持LaunchScreen则会使用LaunchImage中的图片作为启动界面
+
+Apple在iOS8中推出了LaunchScreen.xib来代替之前的LaunchImage作为程序的启动界面，
+相比与LaunchImage，在iOS设备屏幕尺寸越来越多样的情况下，
+LaunchScreen.xib依托AutoLayout无疑更方便，
+否则，对于一个兼容iPhone5-iPhone6Plus的应用，就需要有4长不同尺寸的LaunchImage

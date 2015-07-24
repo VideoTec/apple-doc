@@ -1,0 +1,30 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/
+
+Creating a View
+To create a view programmatically, you can use code like the following:
+
+CGRect  viewRect = CGRectMake(10, 10, 100, 100);
+UIView* myView = [[UIView alloc] initWithFrame:viewRect];
+
+This code creates the view and positions it 
+at the point (10, 10) in its superview’s coordinate system (once it is added to that superview). 
+
+To add a subview to another view, you use the 
+addSubview: method. 
+
+In iOS, sibling views may overlap each other without any issues, allowing complex view placement. 
+The addSubview: method places the specified view on top of other siblings. 
+You can specify the relative z-order of a subview by adding it using the 
+insertSubview:aboveSubview: and 
+insertSubview:belowSubview: methods. 
+
+You can also exchange the position of already added subviews using the 
+exchangeSubviewAtIndex:withSubviewAtIndex: method.
+
+When creating a view, 
+it is important to assign an appropriate value to the autoresizingMask property 
+to ensure the view resizes correctly. 
+View resizing primarily occurs when the orientation of your application’s interface changes 
+but it may happen at other times as well. 
+For example, calling the setNeedsLayout method forces your view to update its layout.
+

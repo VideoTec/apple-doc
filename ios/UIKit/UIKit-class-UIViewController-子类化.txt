@@ -1,0 +1,16 @@
+An app contains at least one custom subclass of UIViewController and more often there are several. 
+
+These custom subclasses define behaviors specific to your app, 
+such as how it handles user interactions with its views. 
+
+preservation[英][ˌprezəˈveɪʃn] [美][ˌprezərˈveɪʃn]
+n.保存，保留；保护；防腐；维护，保持
+
+The following sections provide a brief overview of some of the tasks your custom subclass performs. 
+1）View Management
+1）Memory Management
+1）Handling View Rotations
+1）View Event Notification
+1）Implementing a Container View Controller
+1）State Preservation-保持 and Restoration-恢复
+1）Explaining State Transitions

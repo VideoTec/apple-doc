@@ -1,0 +1,33 @@
+ADBannerView
+CAInterAppAudioSwitcherView
+CAInterAppAudioTransportView
+GLKView
+MKAnnotationView
+MKMapView
+MKOverlayView
+MPVolumeView
+SCNView
+SKView
+UIActionSheet
+UIActivityIndicatorView
+UIAlertView
+UICollectionReusableView
+UIControl    ---------------------------- 重要
+UIImageView
+UIInputView
+UILabel
+UINavigationBar
+UIPickerView
+UIPopoverBackgroundView
+UIProgressView
+UIScrollView
+UISearchBar
+UITabBar
+UITableViewCell
+UITableViewHeaderFooterView
+UIToolbar
+UIVisualEffectView
+UIWebView
+UIWindow    ---------------------------- 重要
+WKWebView
+

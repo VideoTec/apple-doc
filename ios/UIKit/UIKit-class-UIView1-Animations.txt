@@ -1,0 +1,36 @@
+animation[英][ˌænɪˈmeɪʃn] [美][ˌænəˈmeʃən]
+n.生气，活泼；动画片制作，动画片摄制；[影视]动画片
+convey[英][kənˈveɪ] [美][kənˈve]
+vt.传达，传递；运送，输送；[法]让与，转让（财产等）；表达
+
+Animations
+
+Changes to several view properties can be animated—that is, 
+changing the property creates an animation that conveys the change to the user over a short period of time. 
+
+The UIView class does most of the work of performing the actual animations 
+but you must still indicate which property changes you want to be animated.
+ 
+There are two different ways to initiate animations:
+1）In iOS 4 and later, use the block-based animation methods. (Recommended)
+1）Use the begin/commit animation methods.
+
+The block-based animation methods (such as animateWithDuration:animations:) 
+greatly simplify the creation of animations. 
+With one method call, you specify the animations to be performed and the options for the animation. 
+
+However, block-based animations are available only in iOS 4 and later. 
+If your application runs on earlier versions of iOS, you must use the 
+beginAnimations:context: and c
+ommitAnimations class methods 
+to mark the beginning and ending of your animations.
+
+The following properties of the UIView class are animatable:
+
+@property frame
+@property bounds
+@property center
+@property transform
+@property alpha
+@property backgroundColor
+@property contentStretch

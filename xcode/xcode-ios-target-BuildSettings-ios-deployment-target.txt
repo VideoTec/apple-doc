@@ -1,0 +1,7 @@
+deployment[英][dɪ'plɔɪmənt] [美][dɪˈplɔɪmənt]
+n.部署；调度
+
+xcode -> build settings -> deployment -> ios deployment target 
+
+Base SDK指的是当前编译所用的SDK 版本
+iOS Deployment Target指的是，编译后的 app 可在 终端的哪个 版本上运行

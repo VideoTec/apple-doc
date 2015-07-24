@@ -1,0 +1,9 @@
+https://developer.apple.com/library/prerelease/ios/documentation/UIKit/Reference/UIWindow_Class/
+
+The UIWindow class defines an object known as a window that manages and coordinates the views an app displays on a device screen. Unless an app can display content on an external device screen, an app has only one window.
+
+The two principal functions of a window are to provide an area for displaying its views and to distribute events to the views. To change the content your app displays, you can change the window’s root view; you don’t create a new window. A window belongs to a level—typically, UIWindowLevelNormal—that represents where it sits on the z-axis relative to other windows. For example, a system alert window appears above normal app windows.
+
+NOTE
+
+When you use storyboards and the Xcode app templates to create an app, a window is created for you. If you choose to create a window in Interface Builder, be sure to select the Full Screen at Launch option in the Attributes inspector so that the window is sized appropriately for the current device. Because a window doesn’t receive touch events outside of its bounds and views aren’t clipped to the window’s bounds by default, an improperly sized window might not be able to deliver touch events to all its views.

@@ -1,0 +1,98 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIView_Class/
+
+The UIView class defines 
+a rectangular area on the screen and 
+the interfaces for managing the content in that area. 
+
+interaction[英][ˌɪntər'ækʃn] [美][ˌɪntɚˈækʃən]
+n.一起活动；合作；互相影响；互动
+
+At runtime, a view object 
+handles the rendering of any content in its area and also 
+handles any interactions with that content. 
+
+sophisticated[英][səˈfɪstɪkeɪtɪd] [美][səˈfɪstɪˌketɪd]
+adj.复杂的；精致的；富有经验的；深奥微妙的
+
+The UIView class itself provides basic behavior for filling its rectangular area with a background color. 
+More sophisticated content can be presented 
+by subclassing UIView and implementing the necessary drawing and event-handling code yourself. 
+The UIKit framework also includes a set of standard subclasses 
+that range from simple buttons to complex tables and can be used as-is. 
+For example, 
+a UILabel object draws a text string and a UIImageView object draws an image.
+
+responsibility[英][rɪˌspɒnsəˈbɪləti] [美][rɪˌspɑ:nsəˈbɪləti]
+n.责任；职责；责任感，责任心；负责任
+
+Because view objects are the main way your application interacts with the user, 
+they have a number of responsibilities. Here are just a few:
+
+Drawing and animation
+1）Views draw content in their rectangular area using technologies such as UIKit, Core Graphics, and OpenGL ES.
+1）Some view properties can be animated to new values.
+
+Layout and subview management
+1）A view may contain zero or more subviews.
+1）Each view defines its own default resizing behavior in relation to its parent view.
+1）A view can define the size and position of its subviews as needed.
+
+Event handling
+1）A view is a responder and can handle touch events and other events defined by the UIResponder class.
+1）Views can use the addGestureRecognizer: method to install gesture recognizers to handle common gestures.
+
+Views can embed other views and create sophisticated visual hierarchies. 
+This creates a parent-child relationship between 
+the view being embedded (known as the subview) and 
+the parent view doing the embedding (known as the superview). 
+
+alter[英][ˈɔ:ltə(r)] [美][ˈɔltɚ]
+vt.改变；更改；改建（房屋）；（人）变老
+behavior[英][bɪ'heɪvjə] [美][bɪˈhevjɚ]
+n.行为；态度；（机器等的）运转状态；（事物的）反应
+appropriately[英][ə'prəʊprɪətlɪ] [美][ə'proʊprɪrtlɪ]
+adv.适当地
+
+Normally, a subview’s visible area is not clipped to the bounds of its superview, 
+but in iOS you can use the clipsToBounds property to alter that behavior. 
+A parent view may contain any number of subviews but each subview has only one superview, 
+which is responsible for positioning its subviews appropriately.
+
+geometry[英][dʒiˈɒmətri] [美][dʒiˈɑ:mətri]
+n.几何学；几何形状；几何图形；几何学著作
+exclusively[英][ɪk'sklu:sɪvlɪ] [美][ɪkˈsklusɪvlɪ]
+adv.唯一地；专门地，特定地；专有地；排外地
+
+The geometry of a view is defined by its frame, bounds, and center properties. 
+
+The frame 
+defines the origin and dimensions of the view in the coordinate system of its superview and 
+is commonly used during layout to adjust the size or position of the view. 
+
+The center property 
+can be used to adjust the position of the view without changing its size. 
+
+The bounds 
+defines the internal dimensions of the view as it sees them and 
+is used almost exclusively in custom drawing code. 
+
+The size portion of the frame and bounds rectangles are coupled together 
+so that changing the size of either rectangle updates the size of both.
+
+For detailed information about how to use the UIView class, see View Programming Guide for iOS.
+
+significantly[英][sɪgˈnɪfɪkəntli] [美][sɪɡˈnɪfəkəntlɪ]
+adv.意味深长地；值得注目地
+
+NOTE
+
+In iOS 2.x, 
+the maximum size of a UIView object is 1024 x 1024 points. 
+
+In iOS 3.0 and later, 
+views are no longer restricted to this maximum size 
+but are still limited by the amount of memory they consume. 
+It is in your best interests to keep view sizes as small as possible. 
+Regardless of which version of iOS is running, 
+you should consider tiling any content that is significantly larger than the dimensions the screen.
+

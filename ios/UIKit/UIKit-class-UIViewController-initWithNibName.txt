@@ -1,0 +1,17 @@
+Returns a newly initialized view controller with the nib file in the specified bundle.
+
+- (instancetype)initWithNibName:(NSString *)nibName
+                         bundle:(NSBundle *)nibBundle
+nibName
+The name of the nib file to associate with the view controller. The nib file name should not contain any leading path information. If you specify nil, the nibName property is set to nil.
+
+nibBundle
+The bundle in which to search for the nib file. This method looks for the nib file in the bundle's language-specific project directories first, followed by the Resources directory. If this parameter is nil, the method uses the heuristics described below to locate the nib file.
+
+This is the designated initializer for this class.
+
+The nib file you specify is not loaded right away. It is loaded the first time the view controller's view is accessed. If you want to perform additional initialization after the nib file is loaded, override the viewDidLoad method and perform your tasks there.
+
+If you specify nil for the nibName parameter and you do not override the loadView method, the view controller searches for a nib file using other means. See nibName.
+
+If your app uses a storyboard to define a view controller and its associated views, your app never initializes objects of that class directly. Instead, view controllers are either instantiated by the storyboard either automatically by iOS when a segue is triggered or programmatically when your app calls the storyboard object’s instantiateViewControllerWithIdentifier: method. When instantiating a view controller from a storyboard, iOS initializes the new view controller by calling its initWithCoder: method instead. iOS automatically sets the nibName property to a nib file stored inside the storyboard.

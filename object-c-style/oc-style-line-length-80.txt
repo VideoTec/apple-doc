@@ -1,0 +1,1 @@
+The maximum line length for Objective-C and Objective-C++ files is 100 columns. Projects may opt to use an 80 column limit for consistency with the C++ style guide.

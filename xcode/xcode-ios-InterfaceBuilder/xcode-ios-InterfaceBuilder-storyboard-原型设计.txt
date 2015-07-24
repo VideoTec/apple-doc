@@ -1,0 +1,4 @@
+http://segmentfault.com/a/1190000000350973
+
+http://isux.tencent.com/xcode-storyboard.html
+Xcode不仅是开发者用来开发iOS Apps的开发工具，同样也可以被设计师用来创建App的高保真交互原型

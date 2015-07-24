@@ -1,0 +1,13 @@
+http://stackoverflow.com/questions/12643581/xcode-4-5-trailing-whitespace
+
+OK, here's what the problem was.
+
+Xcode will not trim trailing white space if you add a white space at the end of the line, 
+leave the cursor at the end of that line and then save it.
+
+You need to move your cursor off that line and then save it.
+
+May be some conflict between saving the position of the cursor whilst simultaneously trimming the whitespace perhaps?
+
+20:50 2015/7/2
+xcode 编辑会自己删除，行尾的空白符

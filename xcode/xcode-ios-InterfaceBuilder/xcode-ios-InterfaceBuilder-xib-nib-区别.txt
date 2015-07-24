@@ -1,0 +1,24 @@
+NIB 和 XIB 都是 Interface Builder 的图形界面设计文档。
+引用《Cocoa Programming for Mac OSX》一书的说法，
+
+Interface Builder 把窗口、菜单栏以及窗口上的各种控件的对象都“冻结”在了一个 NIB文档里面了；
+程序运行时，这些对象将会“苏醒”。
+
+在终端下我们可以看到，NIB 其实是一个目录。
+它里面有两个也是后缀为 NIB 的文件：designable.nib 和 keyedobjects.nib。
+前者是一个 XML 文档，而后者则是一个二进制文件。
+
+Interface Builder 3 之后，引入了新的文档格式：XIB。
+它是单一的 XML 文档，也就是一个纯文本文件。
+纯文本文件的好处是显而易见的。嗯，就是便于源代码版本管理。
+
+现在最新版本的 Xcode 在创建项目时，已经默认使用 XIB 格式的文档了。
+
+不论在 Interface Builder 中选择的是 NIB 还是 XIB 格式，
+Xcode 编译后都将得到一个供程序运行时使用的经过编译的 NIB 文件
+
+http://blog.csdn.net/lvxiangan/article/details/44906725
+nib是3.0版本以前的产物，在终端下我们可以看到，NIB其实是一个文件夹，里面有可执行的二进制文件
+xib是一个基于xml的描述文件，可以实现可视化编程。
+
+无论nib也好，xib也好，最终在执行UIViewController生命周期函数loadView之前，都会转化成可执行的nib文件

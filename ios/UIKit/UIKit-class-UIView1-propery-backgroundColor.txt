@@ -1,0 +1,9 @@
+The view’s background color.
+
+@property(nonatomic, copy) UIColor *backgroundColor
+
+Changes to this property can be animated. 
+The default value is nil, which results in a transparent background color.
+
+举例：
+self.window.backgroundColor = [UIColor whiteColor];

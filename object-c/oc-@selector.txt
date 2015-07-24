@@ -1,0 +1,37 @@
+http://blog.sina.com.cn/s/blog_735065f90100yopd.html
+
+selector可以叫做选择器，其实指的就是对象的方法，也可以理解为C语言里面的函数指针，在面向对象里面的对应概念。
+
+@selector(xxxx)的作用是找到名字为xxxx的方法。
+一般用于[a performSelector:@selector(b)];就是说去调用a对象的b方法，和[a b];的意思一样，但是这样更加动态一些。
+@selector(xxxx)返回的类型是SEL，看方法说明的时候如果参数类型是SEL，那么就是要接受@selector(xxxx)返回的值的那种了。
+ 
+ 
+在Objc中 SEL的定义是：
+typedef struct objc_selector *SEL;
+具体这objc_selector结构体是什么取决与使用GNU的还是Apple的运行时， 在Mac OS X中SEL其实被映射为一个C字符串，可以看作是方法的名字，它并不一个指向具体方法实现（IMP类型才是）。对于所有的类，只要方法名是相同的，产生的selector都是一样的
+
+http://blog.csdn.net/mamong/article/details/8089217
+更详细讲解， SEL 类型是什么
+
+官方文档
+https://developer.apple.com/library/prerelease/ios/documentation/General/Conceptual/DevPedia-CocoaCore/Selector.html
+A selector is the name used to select a method to execute for an object, or the unique identifier that replaces the name when the source code is compiled. A selector by itself doesn’t do anything. It simply identifies a method. The only thing that makes the selector method name different from a plain string is that the compiler makes sure that selectors are unique. What makes a selector useful is that (in conjunction with the runtime) it acts like a dynamic function pointer that, for a given name, automatically points to the implementation of a method appropriate for whichever class it’s used with. Suppose you had a selector for the method run, and classes Dog, Athlete, and ComputerSimulation (each of which implemented a method run). The selector could be used with an instance of each of the classes to invoke its run method—even though the implementation might be different for each.
+
+Getting a Selector
+Compiled selectors are of type SEL. There are two common ways to get a selector:
+
+At compile time, you use the compiler directive @selector.
+SEL aSelector = @selector(methodName);
+At runtime, you use the NSSelectorFromString function, where the string is the name of the method:
+SEL aSelector = NSSelectorFromString(@"methodName");
+You use a selector created from a string when you want your code to send a message whose name you may not know until runtime.
+
+Using a Selector
+You can invoke a method using a selector with performSelector: and other similar methods.
+
+SEL aSelector = @selector(run);
+[aDog performSelector:aSelector];
+[anAthlete performSelector:aSelector];
+[aComputerSimulation performSelector:aSelector];
+(You use this technique in special situations, such as when you implement an object that uses the target-action design pattern. Normally, you simply invoke the method directly.)

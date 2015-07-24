@@ -1,0 +1,31 @@
+http://www.cnblogs.com/gugupluto/p/3159733.html
+
+ Objective C的runtime技术功能非常强大，能够在运行时获取并修改类的各种信息，包括
+获取方法列表、
+获取属性列表、
+获取变量列表，
+修改方法、属性，
+增加方法，属性等等
+
+官方文档
+https://developer.apple.com/library/mac/documentation/Cocoa/Reference/ObjCRuntimeRef/index.html
+
+Adds a new method to a class with a given name and implementation.
+
+BOOL class_addMethod ( Class cls, SEL name, IMP imp, const char *types );
+
+Return Value
+YES if the method was added successfully, otherwise NO (for example, the class already contains a method implementation with that name).
+
+Discussion
+class_addMethod will add an override of a superclass's implementation, but will not replace an existing implementation in this class. To change an existing implementation, use method_setImplementation.
+
+An Objective-C method is simply a C function that take at least two arguments—self and _cmd. For example, given the following function:
+
+void myMethodIMP(id self, SEL _cmd)
+{
+    // implementation ....
+}
+you can dynamically add it to a class as a method (called resolveThisMethodDynamically) like this:
+
+class_addMethod([self class], @selector(resolveThisMethodDynamically), (IMP) myMethodIMP, "v@:");

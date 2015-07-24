@@ -1,0 +1,59 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplication_Class/
+
+父类：
+UIResponder
+
+The UIApplication class 
+provides a centralized point of control and coordination for apps running on iOS. 
+Every app must have exactly one instance of UIApplication (or a subclass of UIApplication). 
+每个应用 对应 一个UIApplication实例
+
+singleton[英][ˈsɪŋgltən] [美][ˈsɪŋɡəltən]
+n.一个，独身，单独
+When an app is launched, the UIApplicationMain function is called; 
+among its other tasks, this function creates a singleton UIApplication object. 
+Thereafter you access this object by invoking the sharedApplication class method.
+
+A major role of a UIApplication object is to handle the initial routing of incoming user events. 
+It also dispatches action messages forwarded to it 
+by control objects (UIControl) to the appropriate target objects. 
+In addition, the UIApplication object maintains 
+a list of all the windows (UIWindow objects) currently open in the app, 
+so through those it can retrieve any of the app’s UIView objects. 
+
+UIApplicationDelegate 代理接口
+The app object is typically assigned a delegate, 
+an object that the app informs of significant runtime events—for example, 
+app launch, 
+low-memory warnings, and 
+app termination—giving it an opportunity to respond appropriately.
+
+调用其它应用 openURL:
+Apps can cooperatively handle a resource 
+such as an email or an image file through the openURL: method. 
+For example, 
+an app opening an email URL with this method 
+may cause the mail client to launch and display the message.
+
+The programmatic interfaces of UIApplication allow you to 
+manage behavior that is specific to the device. 
+Use this object to do the following:
+
+Control the app’s response to changes in interface orientation.
+Temporarily suspend incoming touch events.
+Turn proximity sensing (of the user’s face) off and on again.
+Register for remote notifications.
+Trigger the undo-redo UI (applicationSupportsShakeToEdit).
+Determine whether an installed app can open a URL (canOpenURL:).
+Extend the execution of the app so that it can finish a task in the background.
+Schedule and cancel local notifications.
+Coordinate the reception of remote-control events.
+Perform app-level state restoration tasks.
+
+adopt[英][əˈdɒpt] [美][əˈdɑ:pt]
+vt.采用，采取，采纳；收养；正式接受，接受；批准
+UIApplication defines a delegate 
+that must 
+adopt the UIApplicationDelegate protocol and 
+implement some of the protocol methods.
+

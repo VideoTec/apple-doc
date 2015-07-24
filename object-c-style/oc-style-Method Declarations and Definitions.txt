@@ -1,0 +1,23 @@
+One space should be used between the - or + and the return type, and no spacing in the parameter list except between parameters.
+Methods should look like this:
+
+- (void)doSomethingWithString:(NSString *)theString {
+  ...
+}
+The spacing before the asterisk is optional. When adding new code, be consistent with the surrounding file's style.
+
+If you have too many parameters to fit on one line, giving each its own line is preferred. If multiple lines are used, align each using the colon before the parameter.
+
+- (void)doSomethingWith:(GTMFoo *)theFoo
+                   rect:(NSRect)theRect
+               interval:(float)theInterval {
+  ...
+}
+When the first keyword is shorter than the others, indent the later lines by at least four spaces, maintaining colon alignment:
+
+- (void)short:(GTMFoo *)theFoo
+          longKeyword:(NSRect)theRect
+    evenLongerKeyword:(float)theInterval
+                error:(NSError **)theError {
+  ...
+}

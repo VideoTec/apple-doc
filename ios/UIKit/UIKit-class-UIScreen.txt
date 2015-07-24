@@ -1,0 +1,5 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIScreen_Class/
+
+A UIScreen object defines the properties associated with a hardware-based display. iOS devices have a main screen and zero or more attached screens. Use this class to obtain screen objects for each display attached to the device. Each screen object defines the bounds rectangle for the associated display and other interesting properties such as its brightness.
+
+Prior to iOS 8, a screen’s bounds rectangle always reflected the screen dimensions relative to a portrait-up orientation. Rotating the device to a landscape or upside-down orientation did not change the bounds. In iOS 8 and later, a screen’s bounds property takes the interface orientation of the screen into account. This behavior means that the bounds for a device in a portrait orientation may not be the same as the bounds for the device in a landscape orientation. Apps that rely on the screen dimensions can use the object in the fixedCoordinateSpace property as a fixed point of reference for any calculations they must make.

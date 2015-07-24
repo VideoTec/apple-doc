@@ -1,0 +1,95 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intf/UIApplicationDelegate
+
+correspond[英][ˌkɒrəˈspɒnd] [美][ˌkɔ:rəˈspɑ:nd]
+vi.符合，一致；相应；通信
+
+Responding to Notifications and Events
+
+The system sends many different notifications and events to the app delegate, 
+letting the app delegate decide how best to respond to the incoming information and update the app. 
+Most of these notifications correspond to app-level behaviors 
+that might require you to 
+update your app’s data or user interface or 
+respond to a changed condition of the system. 
+The way you handle these notifications depends on the architecture of your app. 
+
+In many cases, 
+the app delegate might not do anything more than notify other objects 
+(such as your app’s view controllers) 
+that they need to update themselves,
+but in some cases the app delegate might do the work itself.
+
+--------------------------------------
+ Notifications and Events 列表
+--------------------------------------
+
+--------------------------------------
+application:didReceiveRemoteNotification:fetchCompletionHandler: method
+--------------------------------------
+When a remote notification arrives, the system calls the 
+application:didReceiveRemoteNotification:fetchCompletionHandler: method. 
+Notifications usually signal the availability of new information. 
+In your app delegate method, you might begin downloading new data from a server 
+so that you can update your app’s data structures. 
+You might also use the notification to update your user interface.
+
+--------------------------------------
+application:didReceiveLocalNotification: method
+--------------------------------------
+When a local notification fires, the system calls the 
+application:didReceiveLocalNotification: method. 
+The app must be running (or recently launched) to receive this event.
+
+--------------------------------------
+application:handleActionWithIdentifier:forRemoteNotification:completionHandler: or 
+application:handleActionWithIdentifier:forLocalNotification:completionHandler: method 
+--------------------------------------
+When the user taps a custom action in the alert for a remote or local notification’s, 
+the system calls the 
+application:handleActionWithIdentifier:forRemoteNotification:completionHandler: or 
+application:handleActionWithIdentifier:forLocalNotification:completionHandler: method 
+in the background so that your app can perform the associated action.
+
+--------------------------------------
+application:performFetchWithCompletionHandler: method
+--------------------------------------
+For apps that want to initiate background downloads, the system calls the 
+application:performFetchWithCompletionHandler: method 
+when the time is right for you to start those downloads.
+
+--------------------------------------
+application:handleEventsForBackgroundURLSession:completionHandler: method
+--------------------------------------
+For apps that use the NSURLSession class to perform background downloads, the system calls the 
+application:handleEventsForBackgroundURLSession:completionHandler: method 
+when those downloads finished while the app was not running. 
+You can use this method to process the downloaded files and update the affected view controllers.
+
+--------------------------------------
+applicationDidReceiveMemoryWarning: method
+--------------------------------------
+When a low-memory condition occurs, the system notifies the app delegate by calling its 
+applicationDidReceiveMemoryWarning: method. 
+The app notifies its view controllers separately so the app delegate should use this notification to 
+remove references to objects and data not managed directly by a view controller.
+
+--------------------------------------
+applicationSignificantTimeChange: method
+--------------------------------------
+When a significant change in time occurs, the system notifies the app delegate by calling its 
+applicationSignificantTimeChange: method. 
+If your app is sensitive to changes in time, 
+you can use this method to update your app’s data and user interface.
+
+--------------------------------------
+applicationProtectedDataWillBecomeUnavailable: method
+applicationProtectedDataDidBecomeAvailable: method
+--------------------------------------
+When the user locks the device, the system calls the app delegate’s 
+applicationProtectedDataWillBecomeUnavailable: method. 
+Data protection prevents unauthorized access to files while the device is locked. 
+If your app references a protected file, 
+you must remove that file reference and release any objects associated with the file when this method is called. 
+When the user subsequently unlocks the device, 
+you can reestablish your references to the data in the app delegate’s 
+applicationProtectedDataDidBecomeAvailable: method.

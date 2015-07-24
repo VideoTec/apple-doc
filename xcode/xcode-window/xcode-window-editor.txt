@@ -1,0 +1,63 @@
+https://developer.apple.com/library/mac/recipes/xcode_help-general/Chapters/AbouttheEditorArea.html#//apple_ref/doc/uid/TP40010548-CH6-SW1
+
+------------------------------------
+三种编辑器样式 - the editor selector in the main window toolbar
+------------------------------------
+Standard: 
+fills a single editor pane with the contents of the selected file.
+
+assistant[英][əˈsɪstənt] [美][əˈsɪstənt]
+n.助手，助理；[化学]（染色的）助剂；辅助物；店员，伙计
+Assistant: 
+presents a separate editor pane with content logically related to that in the standard editor pane. 
+Use the split controls in the Assistant pane to split the pane. 
+Use View > Assistant Layout to set your preferred assistant pane and split configuration.
+
+Version: 和版本控制系统相关
+shows the differences between the selected file in one pane and 
+another version of that same file in a second pane
+
+------------------------------------
+编辑器类型
+------------------------------------
+Source editor: 
+Write and edit source code, set and enable or disable breakpoints, and control program execution.
+
+Project editor: 
+View and edit project and target settings, such as build options, target architectures, and code signing characteristics.
+
+Property list editor: 
+View and edit various types of property lists, or plists—small, highly structured files whose data is organized into hierarchies of specific types of objects.
+
+Rich text editor: 
+Open, write, and edit rich text (.rtf) files, much as you would with TextEdit.
+
+Core Data model editor: 
+Implement or modify a Core Data model.
+
+Mapping model editor: 
+Graphically create and edit a mapping between an old Core Data store and a new one.
+
+Interface Builder: 
+Graphically create and edit user interface files and storyboards.
+
+Script editor: 
+Create and edit AppleScript script files.
+
+Scripting dictionary editor: 
+Create and edit the scripting definition (.sdef) file for your application.
+
+SpriteKit Particle editor: 
+Create and edit particle emitters for SpriteKit.
+
+SpriteKit Particle System editor: 
+Create and edit a system of particle emitters for SpriteKit.
+
+SpriteKit Scene editor: 
+Create and edit a scene for SpriteKit.
+
+Asset Catalog editor: 
+Edit the contents of an asset catalog containing images used in your app.
+
+Playground editor: 
+An interactive environment for editing and evaluating Swift code.

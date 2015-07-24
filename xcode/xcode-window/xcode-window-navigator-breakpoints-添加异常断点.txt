@@ -1,0 +1,7 @@
+Breakpoint navigator: 
+Fine-tune breakpoints by specifying characteristics such as a triggering condition, 
+an ignore count, and an action to be performed.
+
+15:22 2015/7/1
+在底部的 filter-bar 里，选择添加：
+Add Exception Breakpoint - 会断在出现异常的地方

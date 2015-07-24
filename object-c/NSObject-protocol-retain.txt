@@ -1,0 +1,11 @@
+You send an object a retain message 
+when you want to prevent it from being deallocated until you have finished using it.
+
+An object is deallocated automatically when its reference count reaches 0. 
+retain messages increment the reference count, and 
+release messages decrement it.
+
+As a convenience, retain returns self because it may be used in nested expressions
+
+You would implement this method only if you were defining your own reference-counting scheme. 
+Such implementations must return self and should not invoke the inherited method by sending a retain message to super.

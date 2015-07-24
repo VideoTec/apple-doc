@@ -1,0 +1,6 @@
+http://www.ifun.cc/blog/2014/02/22/ioskai-fa-zhi-xibji-qiao-jie-shao/
+UI能用xib就尽量用xib
+能用storyboard就用storyboard, 一个storyboard里最好别装太多的UIViewController，这在结队开发中将不利
+
+http://www.ifun.cc/blog/2014/02/23/jie-dui-kai-fa-zhi-duo-storyboard/
+结队开发之多storyboard

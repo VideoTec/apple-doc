@@ -1,0 +1,23 @@
+http://blog.csdn.net/hherima/article/details/17352053
+
+声明并使用block
+开发者使用^操作符声明block变量，^表示是一个block的开始。block的body体在{ }之内
+int multiplier = 7;
+int (^myBlock)(int) = ^(int num) {
+    return num * multiplier;
+};
+
+直接使用block
+多数情况，不必要声明block变量；
+相反只需要写一个block代码(或者翻译为文字)，在需要参数的地方。
+下面的例子使用了qsort_b函数。qsort_b跟qsort_r相似的函数，但是使用block作为参数。
+
+char *myCharacters[3] = { "TomJohn", "George", "Charles Condomine" };
+ 
+qsort_b(myCharacters, 3, sizeof(char *), ^(const void *l, const void *r) {
+    char *left = *(char **)l;
+    char *right = *(char **)r;
+    return strncmp(left, right, 1);
+});
+ 
+// myCharacters is now { "Charles Condomine", "George", "TomJohn" }

@@ -1,0 +1,32 @@
+Method invocations should be formatted much like method declarations. When there's a choice of formatting styles, follow the convention already used in a given source file.
+Invocations should have all arguments on one line:
+
+[myObject doFooWith:arg1 name:arg2 error:arg3];
+or have one argument per line, with colons aligned:
+
+[myObject doFooWith:arg1
+               name:arg2
+              error:arg3];
+			  
+-----------------------------------------------------
+错误的格式
+Don't use any of these styles:
+
+[myObject doFooWith:arg1 name:arg2  // some lines with >1 arg
+              error:arg3];
+
+[myObject doFooWith:arg1
+               name:arg2 error:arg3];
+
+[myObject doFooWith:arg1
+          name:arg2  // aligning keywords instead of colons
+          error:arg3];
+错误的格式
+-----------------------------------------------------
+As with declarations and definitions, when the first keyword is shorter than the others, indent the later lines by at least four spaces, maintaining colon alignment:
+
+[myObj short:arg1
+          longKeyword:arg2
+    evenLongerKeyword:arg3
+                error:arg4];
+Invocations containing inlined blocks may have their segments left-aligned at a four space indent.

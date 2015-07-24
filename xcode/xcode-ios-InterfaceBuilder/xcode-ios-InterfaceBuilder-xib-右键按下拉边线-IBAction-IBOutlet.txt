@@ -1,0 +1,4 @@
+从 xib 文件里，向，ViewController.h 里拉
+
+IBOutlet 在控件上右键按下，拉向 ViewController.h
+IBAction 在控件上，右键，弹出菜单，选择事件，拉向 ViewController.h

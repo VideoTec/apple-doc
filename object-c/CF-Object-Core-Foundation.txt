@@ -1,0 +1,48 @@
+Objective-C Foundation
+Core Foundation 
+
+http://blog.csdn.net/yiyaaixuexi/article/details/8553659
+Objective-C 和 Core Foundation 对象相互转换的内存管理总结
+
+http://stackoverflow.com/questions/9353804/cf-objects-vs-ns-objects
+legacy[英][ˈlegəsi] [美][ˈlɛɡəsi] n.遗产；遗赠
+Are the CF objects just legacy objects? Not at all. 
+In fact, Nextstep existed for years with just the Objective-C Foundation library and no Core Foundation library. 
+When Apple needed to support 
+both the Carbon API and the Cocoa API on top of the same lower-level operating system facilities, 
+they created Core Foundation support both.
+
+When should you use one or the other? 
+Generally, you should use the Objective-C classes (e.g. NSArray) whenever you can, 
+because the Objective-C interface is more pleasant to use: 
+myArray.count (or [myArray count]) is easier to read and write than CFArrayGetCount(myArray). 
+You should use the Core Foundation API only when you really need to: 
+when you're on a platform that doesn't have Objective-C, or 
+when you need features that the Core Foundation API provides but the Objective-C objects lack. 
+For example, you can specify callbacks when creating a CFArray or a CFDictionary 
+that let you store non-reference-counted objects. 
+The NSArray and NSDictionary classes don't let you do that - 
+they always assume you are storing reference-counted objects.
+
+--------------------------------------------
+为什么存在： Core Foundation 对象？
+--------------------------------------------
+If you want to provide a C API, like the Carbon API, and 
+you need things like arrays and dictionaries of referenced-counted objects, 
+you want a library like Core Foundation (which provides CFArray), and of course 
+it needs to have a C API.
+
+If you want to write libraries for third-parties to use on Windows (for example), 
+you need to provide a C API.
+
+If you want to write a low-level library, 
+say for interfacing with your operating system's kernel, and 
+you don't want the overhead of Objective-C messaging, 
+you need a C API.
+
+So those are good reasons for having Core Foundation, a pure C library.
+
+But if you want to provide a higher-level, 
+more pleasant API in Objective-C, 
+you want Objective-C objects that represent arrays, dictionaries, reference-counted objects, and so on. 
+So you need Foundation, which is an Objective-C library.

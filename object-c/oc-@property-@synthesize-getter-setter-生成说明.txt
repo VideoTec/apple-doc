@@ -1,0 +1,37 @@
+//代码一：
+@synthesize name = _name;  //这句话，编译器发现你没有定义任何getter和setter，所以会同时会你生成getter和setter
+
+//代码二：
+@synthesize name = _name;  //因为你定义了name，也就是getter方法，所以编译器只会为生成setter方法，也就是setName方法。
+
+-(NSString*) name{
+    NSLog(@"name");
+    return _name;
+}
+
+//代码三：
+@synthesize name = _name;   //这里因为你定义了setter方法，所以编译器只会为你生成getter方法
+
+-(void) setName:(NSString *)name{
+    NSLog(@"setName");
+    if (_name != name) {
+        [_name release];
+        _name = [name copy];
+    }
+}
+
+//代码四：
+@synthesize name = _name;  //这里你自己定义了getter和setter，这句话没用了，你可以注释掉。
+
+-(NSString*) name{
+    NSLog(@"name");
+    return _name;
+}
+
+-(void) setName:(NSString *)name{
+    NSLog(@"setName");
+    if (_name != name) {
+        [_name release];
+        _name = [name copy];
+    }
+}

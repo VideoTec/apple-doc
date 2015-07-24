@@ -1,0 +1,5 @@
+
+http://stackoverflow.com/questions/4603767/how-to-access-internet-on-iphone-simulator
+
+If you have connection to internet on the development machine the simulator uses that.. 
+There are no special things you have to do.. just make sure you are connected to the internet with your mac

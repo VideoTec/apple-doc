@@ -1,0 +1,11 @@
+State Preservation and Restoration
+
+If you assign a value to the view controller's restorationIdentifier property, 
+the system may ask the view controller to encode itself when the app transitions to the background. 
+
+When preserved, a view controller preserves the state of any views in its view hierarchy that also have restoration identifiers. 
+View controllers do not automatically save any other state. 
+
+If you are implementing a custom container view controller, 
+you must encode any child view controllers yourself. 
+Each child you encode must have a unique restoration identifier.

@@ -1,0 +1,11 @@
+1. 创建方法
+Make a folder in finder, add files to it, rename it to bundlename.bundle
+
+2. 导入工程
+drag into Xcode - success!
+
+3. 调用
+UIImage *image = [UIImage imageNamed:@"appAssets.bundle/images/blue_arrow.png"];
+
+4. 作用
+keeping images as bundle would be the proper way to prevent it from being copied from .ipa file.

@@ -1,0 +1,23 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIButton_Class/
+
+intercept[英][ˌɪntəˈsept] [美][ˌɪntərˈsept]
+vt.拦截，拦住；截球；截击；拦阻
+n.（数学）截距；截击，拦截；截听；拦截者
+
+tapped[英]['tæpɪd] [美]['tæpɪd]
+adj.发接触音的
+v.开发( tap的过去式和过去分词 )；（从容器等）汲取（液体）；割[打]开…取[放]液体；轻拍，轻敲
+
+inherited[英][ɪn'herɪtɪd] [美][ɪn'herɪtɪd]
+adj.通过继承得到的，遗传的；继承权的
+v.继承( inherit的过去式和过去分词 )；经遗传获得（品质、身体特征等）接替（责任等），继任
+
+appearance[英][əˈpɪərəns] [美][əˈpɪrəns]
+n.外貌，外观；出现，露面；[哲]现象
+
+An instance of the UIButton class implements a button on the touch screen. 
+A button intercepts touch events and sends an action message to a target object when tapped. 
+
+Methods for setting the target and action are inherited from UIControl. 
+This class provides methods for setting the title, image, and other appearance properties of a button. 
+By using these accessors, you can specify a different appearance for each button state.

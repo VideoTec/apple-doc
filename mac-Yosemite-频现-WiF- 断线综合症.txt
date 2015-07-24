@@ -1,0 +1,52 @@
+Yosemite (=National Park)（美国加利福尼亚州中部）约塞米蒂国家公园
+
+1. Yosemite 频现 WiFi 断线综合症
+
+2. 新买的 Mac Pro 15(Retina)系统在osx 10.10.1下，Wi-Fi状态不断显示正在查找网络/打开，每隔五秒左右交替一次状态
+   英文： Looking for networks
+   http://bbs.feng.com/read-htm-tid-8016221.html 正常现象？
+   http://superuser.com/questions/828322/just-updated-to-mac-os-x-10-10-yosemite-and-wi-fi-is-always-looking-for-a-networ
+   Every time you open that drop down, it will start looking. 
+   It automatically assumes that because you've opened the menu, you're looking to change network, even if you're connected. 
+   It won't do it when you're connected if the network drop down is closed.
+
+
+参考
+essentially[英][ɪˈsenʃəli] [美][ɪˈsenʃəli] adv.本质上，根本上；本来
+http://fieldguide.gizmodo.com/the-worst-bugs-in-os-x-yosemite-and-how-to-fix-them-1652690924
+http://osxdaily.com/2014/10/25/fix-wi-fi-problems-os-x-yosemite/
+http://www.reddit.com/r/apple/comments/2jwah7/psa_yosemite_wifi_issues_list_of_possible_fixes/
+Essentially you need to erase all of your network plist files so that Yosemite will create them again from scratch. 
+
+If that doesn't work, you can set up a new Wi-Fi network location with custom DNS settings. 
+
+参考
+苹果客服给用户支招称，删除系统偏好设置的网络面板中多余的首选网络，重置System Management Controller
+http://digi.tech.qq.com/a/20141029/010658.htm
+第一种方法：
+在Finder当中执行Command+Shift+G快捷键，并输入路径“/Library/Preferences/SystemConfiguration/”
+删除 
+com.apple.airport.preferences.plist
+com.apple.network.identification.plist
+com.apple.wifi.message-tracer.plist
+NetworkInterfaces.plist
+preferences.plist
+重启Mac 开启Wi-Fi 
+上述步骤会强迫OS X重新建立所有网络配置文件
+
+第二种方法
+创建新的Wi-Fi网络位置和自定义DNS
+这一步主要是让你创建新的网络位置，同时使其配置参数有别于默认。
+首先，我们会使用全新的网络设置方式，然后自行设定DNS，而不是等待系统从路由器那里获取DNS细节信息。
+最后，我们还会设置一个比默认稍小的自定义MTU值（1453），这可以减少被路由器所拒绝的几率。
+
+额外的小技巧
+1、加入2.4GHz网络——部分用户称2.4GHz网络没有出现问题
+2、将路由器的5GHz信道设置到50-120之间
+3、关闭蓝牙——部分用户称禁用蓝牙可解决Wi-Fi问题，但这对于那些拥有蓝牙外设的Mac用户来说显然并不合适
+
+参考
+http://mrnoidea.com/626  网络 位置 不要使用自动，设置几个自定义的wifi位置
+http://www.waerfa.com/os-x-yosemite-wi-fi-troubleshooting-two
+1. 修正 Mac 从休眠唤醒后 Wi-Fi 掉线问题
+2. 更新 DHCP 

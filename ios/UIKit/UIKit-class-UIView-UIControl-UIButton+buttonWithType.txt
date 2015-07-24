@@ -1,0 +1,21 @@
+appropriate[英][əˈprəʊpriət] [美][əˈproʊpriət]
+adj.适当的；恰当的；合适的
+v.盗用；侵吞；拨（专款等）
+
+Creates and returns a new button of the specified type.
+
++ (id)buttonWithType:(UIButtonType)buttonType
+
+This method is a convenience constructor for creating button objects with specific configurations. If you subclass UIButton, this method does not return an instance of your subclass. If you want to create an instance of a specific subclass, you must alloc/init the button directly.
+
+When creating a custom button—that is a button with the type UIButtonTypeCustom—the frame of the button is set to (0, 0, 0, 0) initially. Before adding the button to your interface, you should update the frame to a more appropriate value.
+
+typedef enum {
+   UIButtonTypeCustom = 0,
+   UIButtonTypeSystem,
+   UIButtonTypeDetailDisclosure,
+   UIButtonTypeInfoLight,
+   UIButtonTypeInfoDark,
+   UIButtonTypeContactAdd,
+   UIButtonTypeRoundedRect,
+} UIButtonType;

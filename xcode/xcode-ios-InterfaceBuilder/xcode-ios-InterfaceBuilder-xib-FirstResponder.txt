@@ -1,0 +1,32 @@
+FirstResponder 
+attributes inspector 窗口
+Uer Defined -> action - type
+
+http://stackoverflow.com/questions/598455/first-responder-did-i-get-that-right
+什么是 first responder
+A "First Responder" in a NibFile is an Object … !!!!!!!!!!!NO
+actually, First Responder is nil. 
+Connecting a UI control (e.g., button) to First Responder in a nib 
+is equivalent to [control setTarget:nil] in code
+
+
+http://blog.csdn.net/jjunjoe/article/details/8574414
+First Responder：
+View和ViewController之间的对应关系，需要一个桥梁来进行连接的（即，对于一个视图，他如何知道自己的界面的操作应该由谁来响应），这个桥梁就是File's Owner。
+当前响应用户触摸的对象。在应用程序生命周期内， First Responder 在用户与屏幕交互时变化。例如，假设有一个表单。当用户触摸表单中的某个文本域时，那个文本域将成为活动文本域，并担当 First Responder 的角色。
+
+http://www.devdiv.com/storyboard_first_responder_-blog-1-50012.html
+Storyboard中的First Responder初步理解
+1. Storyboard中的First Responder只是一个placeholder，它不是具体指向哪个responder，
+2. 如果程序不在乎谁是First Responder，
+   都让First Responder执行某个action（比如这里的paste:），
+   那么我们就可以把event发给First Responder。
+
+http://stackoverflow.com/questions/3768602/what-are-file-owner-and-first-responder-in-iphone-sdk-xcode
+
+First responder is simply the first object in the responder chain that can respond to events. The responder chain is a runtime collection (or more accurately a hierarchy) of objects that can respond to an event. For example, consider you have a window with a view and on that view is a text field.
+
+If that text field has focus it's known as the first responder in the chain. So if you send a message to the first responder it'll be sent to the text field first. If the text field can't handle the message it'll be sent to the next responder. And the next. And the next, until you get to the end of the responder chain or something has consumed the event (iirc).
+
+The responder chain is worth reading about - hit apple's documentation for more information.
+

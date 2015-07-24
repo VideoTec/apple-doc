@@ -1,0 +1,6 @@
+将对象加入到自动释放池，对象会一直存在，直到未来的某个时间我们不再需要它，才会被系统回收。
+
+-(NSObject*) someMethod {
+  NSObject *obj = [[[NSObject alloc] init] autorelease];
+  return obj; // will be deallocated by autorelease pool later
+}

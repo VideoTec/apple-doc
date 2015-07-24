@@ -1,0 +1,9 @@
+https://developer.apple.com/library/prerelease/ios/documentation/AVFoundation/Reference/AVAssetExportSession_Class/index.html#//apple_ref/occ/cl/AVAssetExportSession
+
+An AVAssetExportSession object transcodes the contents of an AVAsset source object to create an output of the form described by a specified export preset.
+
+Prior to initializing an instance of AVAssetExportSession, you can use allExportPresets to get the complete list of presets available. Use exportPresetsCompatibleWithAsset: to get a list of presets that are compatible with a specific asset.
+
+After you have initialized an export session with the asset that contains the source media, the export preset name (presetName), and the output file type (outputFileType), you can start the export running by invoking exportAsynchronouslyWithCompletionHandler:. Because the export is performed asynchronously, this method returns immediately—you can use progress to check on the progress. Depending on the capabilities of the device, some exports may be queued when multiple exports are attempted. When this happens, the status of a queued export will indicate that it's waiting (AVAssetExportSessionStatusWaiting).
+
+The completion handler you supply to exportAsynchronouslyWithCompletionHandler: is called whether the export fails, completes, or is cancelled. Upon completion, the status property indicates whether the export has completed successfully. If it has failed, the value of the error property supplies additional information about the reason for the failure.

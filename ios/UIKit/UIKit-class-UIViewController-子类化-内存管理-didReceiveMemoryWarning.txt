@@ -1,0 +1,11 @@
+critical[英][ˈkrɪtɪkl] [美][ˈkrɪtɪkəl]
+adj.批评的，爱挑剔的；关键的；严重的；极重要的
+
+Memory Management
+
+Memory is a critical resource in iOS, and 
+view controllers provide built-in support for reducing their memory footprint at critical times. 
+
+The UIViewController class provides some automatic handling of low-memory conditions 
+through its didReceiveMemoryWarning method, which releases unneeded memory.
+

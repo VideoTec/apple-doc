@@ -1,0 +1,57 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIApplicationDelegate_Protocol/index.html#//apple_ref/occ/intf/UIApplicationDelegate
+
+Starting Up Your App
+Launch time is an important point in an app’s life cycle. At launch time, the app delegate is responsible for executing any custom code required to initialize your app. 
+
+For example, the app delegate typically 
+creates the app’s initial data structures, 
+registers for any required services, and 
+tweaks the app’s initial user interface based on any available data.
+
+Some additional tasks that the app delegate performs at launch time include the following:
+
+判断，APP的启动操作，由来。 - Launch Options Keys
+Look at the launch options dictionary to determine why your app was launched. The 
+application:willFinishLaunchingWithOptions: and 
+application:didFinishLaunchingWithOptions: methods 
+provide a dictionary with keys indicating the reason that your app was launched.
+
+restoration[英][ˌrestəˈreɪʃn] [美][ˌrɛstəˈreʃən]
+n.（规章制度等的）恢复；复原；（遗失等物的）归还原主；整修
+Determine whether state restoration should proceed. 
+If the app previously saved the state of its view controllers, 
+restoration of those view controllers to their previous state proceeds 
+only if the app delegate’s 
+application:shouldRestoreApplicationState: method returns YES.
+
+注册 remote notifications
+Register for any remote notifications your app supports. 
+In order to receive remote notifications (also known as push notifications), 
+an app must register with the remote notification service by calling the 
+registerForRemoteNotificationTypes: method of the UIApplication object. 
+Usually, you perform this task at launch time.
+
+Open a URL that was sent to your app. 
+If there is a URL to open, the system calls the 
+application:openURL:sourceApplication:annotation: method of your app delegate. 
+You also can tell if there is a URL to open 
+by looking in the launch options dictionary for the UIApplicationLaunchOptionsURLKey key. 
+You must declare the types of URLs your app supports by 
+adding the CFBundleURLTypes key to your app’s Info.plist file. 
+For more information about registering and handling URLs, see App Programming Guide for iOS.
+
+Provide the root window object for your app. 
+Technically, the app delegate provided by Xcode already implements the window property, 
+so you do not have to do anything special here unless you want to customize your app’s window.
+
+The options dictionary passed to the 
+application:willFinishLaunchingWithOptions: and 
+application:didFinishLaunchingWithOptions: methods 
+is an important source of launch-time information for your app. 
+The keys in that dictionary tell you the reason your app was launched and 
+give you a chance to adjust your launch procedures accordingly. 
+
+For example, if your app was launched because of an incoming remote notification, 
+you might want to reconfigure your user interface to display data related to that notification. 
+For a list of possible reasons why your app might be launched, see Launch Options Keys.
+

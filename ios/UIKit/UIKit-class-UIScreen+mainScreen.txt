@@ -1,0 +1,3 @@
++ (UIScreen *)mainScreen
+
+Returns the screen object representing the device’s screen.

@@ -1,0 +1,7 @@
+The root view controller for the window.
+
+@property(nonatomic, retain) UIViewController *rootViewController
+
+The root view controller provides the content view of the window. Assigning a view controller to this property (either programmatically or using Interface Builder) installs the view controller’s view as the content view of the window. If the window has an existing view hierarchy, the old views are removed before the new ones are installed.
+
+The default value of this property is nil.

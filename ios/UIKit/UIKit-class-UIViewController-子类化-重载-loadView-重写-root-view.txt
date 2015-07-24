@@ -1,0 +1,13 @@
+You can override this method in order to create your views manually. 
+If you choose to do so, assign the root view of your view hierarchy to the view property. 
+The views you create should be unique instances and should not be shared with any other view controller object. 
+
+Your custom implementation of this method should not call super.
+
+http://haoxiang.org/2010/11/loadview-usage/
+loadView仅仅应该在开发者希望自行通过编码而不是Interface Builder定制view的时候被实现，
+1）不应该在其中调用[super loadView]， -----------  因为它会想主设法，创建 root view
+2）你的loadView中应该有self.view = ...这样的行为。
+
+如果仅仅是想要在当前view上增加一些UIButton或是UILabel，
+应该在viewDidLoad里去做，此时不要实现自己的loadView

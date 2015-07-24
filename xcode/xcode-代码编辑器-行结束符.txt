@@ -1,0 +1,3 @@
+Text Editing panel of the application preferences (Xcode, Preferences) 
+
+默认就是 lf

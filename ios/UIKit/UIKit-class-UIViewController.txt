@@ -1,0 +1,23 @@
+https://developer.apple.com/library/ios/documentation/UIKit/Reference/UIViewController_Class/
+
+The UIViewController class provides the fundamental view-management model for all iOS apps. You rarely instantiate UIViewController objects directly. Instead, you instantiate subclasses of the UIViewController class based on the specific task each subclass performs.
+
+A view controller manages a set of views that make up a portion of your app’s user interface. As part of the controller layer of your app, a view controller coordinates its efforts with model objects and other controller objects—including other view controllers—so your app presents a single coherent user interface.
+
+Where necessary, a view controller:
+1）resizes and lays out its views
+2）adjusts the contents of the views
+3）acts on behalf of the views when the user interacts with them
+
+A view controller is tightly bound to the views it manages and takes part in the responder chain used to handle events. View controllers descend from the UIResponder class and are inserted into the responder chain between the managed root view and its superview, which typically belongs to a different view controller. If the view controller’s view does not handle an event, the view controller has the option of handling the event or it can pass the event to the superview.
+
+View controllers are rarely used in isolation. Instead, you use multiple view controllers, each of which owns a portion of your app’s user interface. For example, one view controller might manage a table of items while a different view controller manages the display of a selected item from that table. Each view controller displays its own views to show the content it is responsible for.
+
+
+
+------------------------------------------------------------------
+UIApplicationMain 会加载 nib file 前生成 UIViewController 对象
+------------------------------------------------------------------
+If the application’s Info.plist file specifies a main nib file to be loaded, 
+by including the NSMainNibFile key and a valid nib file name for the value, 
+this function(UIApplicationMain) loads that nib file.

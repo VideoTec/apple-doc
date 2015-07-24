@@ -1,0 +1,49 @@
+literal[英][ˈlɪtərəl] [美][ˈlɪtərəl]
+adj.照字面的；原义的；逐字的；平实的，避免夸张
+
+http://www.cnblogs.com/496668219long/p/4421985.html
+http://my.oschina.net/iamzkt/blog/127718
+和字面量相关的 NSObject - NSString、NSNumber、NSArray、NSDictionary
+
+字符串字面量   NSString *someString = @”Effective Objective-C 2.0”;
+               等效方法 NSString *greeting = [NSString stringWithUTF8String:"Hello World"];
+字面数值       NSNumber *someNumber = @1;
+               等效方法 NSNumber *someNumber = [NSNumber numberWithInt:1];
+
+用字面量语法创建数组或字典时，若值中有nil，则会抛出异常。因此，务必确保值里不含nil
+字面量数组     NSArray *arrayB = @[object1, object2, object3];
+               NSArray *aArray = @[@22, @"kuntzuo", @"hello"];
+               等效方法 NSArray *aArray = [NSArray arrayWithObjects: [NSNumber numberWithInt:22], @"kuntzuo", @"hello", nil];
+
+字面量字典     
+NSDictionary *myProfile = [NSDictionary dictionaryWithObjectsAndKeys: 
+                           @"kuntzuo ", @"Name", 
+                           @"男 ", @"Sex", 
+                           [NSNumber numberWithInt:22], @"Age", 
+                           nil];
+NSDictionary *myProfile = @{"Name":"kuntzuo","Sex":"男","Age":@22};
+
+NSMutableArray、NSMutableDictionary，新特性还允许你用下标的方式来访问和修改集合中的值。
+下面的代码简单演示了这一特性
+
+//对于上面的NSArray *aArray
+NSArray *aArray = @[@22, @"kuntzuo", @"hello"];
+NSMutableArray *mutableArray = [@[@22, @"kuntzuo", @"hello"] mutableCopy];
+ 
+//传统访问方式
+NSString *greeting = [mutableArray objectAtIndex:2]; //"hello"
+//新方法访问
+NSString *greeting = mutableArray[2]; // "hello"
+//新方法修改
+mutableArray[2] = @"hello world";
+ 
+ 
+//对于上面的NSDictionary
+NSDictionary *myProfile = @{"Name":"kuntzuo","Sex":"男","Age":@22}
+NSMutableDictionary *mutableDic = [myProfile mutableCopy];
+//传统访问方式
+NSString *name = [mutableDic objectForKey:@"Name"]; // "kuntzuo"
+//新方法访问
+NSString *myName = mutableDic[@"Name"];//"kuntzuo"
+//新方法修改
+mutableDic[@"Name"] = @"kuntian zuo";

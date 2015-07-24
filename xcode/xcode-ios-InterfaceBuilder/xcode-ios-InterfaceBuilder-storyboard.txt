@@ -1,0 +1,17 @@
+storyboard是多个xib文件集合的描述文件，也采用xml格式。
+那么storyboard与xib比较，区别在于：
+一个工程中可以有多个xib文件，一个xib文件对应着一个视图控制器（UIViewController）和多个视图（UIView）。
+而使用storyboard时，一个工程只需要一个主storyboard文件就可以了。
+因此，在包含多个视图控制器的情况下，采用storyboard管理比较方便，而且storyboard还可以描述界面之间的导航关系
+
+http://onevcat.com/2013/12/code-vs-xib-vs-storyboard/
+iOS5之后Apple提供了一种全新的方式来制作UI，那就是StoryBoard。
+简单理解来说，可以把StoryBoard看做是一组viewController对应的xib，
+以及它们之间的转换方式的集合。
+
+在StoryBoard中不仅可以看到每个ViewController的布局样式，
+也可以明确地知道各个ViewController之间的转换关系。
+相对于单个的xib，其代码需求更少，也由于集合了各个xib，
+使得对于界面的理解和修改的速度也得到了更大提升。
+
+减少代码量就是减少bug量，这也是程序开发中的真理之一

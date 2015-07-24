@@ -1,0 +1,19 @@
+https://developer.apple.com/library/mac/recipes/xcode_help-general/Chapters/AbouttheUtilityArea.html#//apple_ref/doc/uid/TP40010548-CH8-SW1
+
+Library pane (library bar + filter bar)
+
+File templates: （向工程添加新文件）
+templates for common types of files and code constructs. 
+To use a template, drag it from the library to the project navigator.
+
+Code snippets: 
+short pieces of source code for use in your software. 
+To use one, drag it directly into your source code file.
+
+Objects:  （控件列表）
+interface objects. 
+To use one, drag it directly into your nib file in the Interface Builder editor window.
+
+Media files:  （图片，声音，等等资源文件）
+graphics, icons, and sound files. 
+To use one, drag it directly to your nib file in the Interface Builder editor window.

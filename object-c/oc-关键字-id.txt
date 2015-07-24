@@ -1,0 +1,23 @@
+有点类似与c语言的(void *） 
+有了id,用户在调用一个对象的方法时，就可以不必知道这个对象具体是什么类型
+
+http://stackoverflow.com/questions/7987060/what-is-the-meaning-of-id
+id is a pointer to any type, but unlike void * it always points to an Objective-C object. 
+For example, you can add anything of type id to an NSArray, but those objects must respond to retain and release.
+
+The compiler is totally happy for you to implicitly cast any object to id, and for you to cast id to any object. 
+This is unlike any other implicit casting in Objective-C, and is the basis for most container types in Cocoa.
+
+https://zh.wikipedia.org/wiki/Objective-C
+- setMyValue:(id) foo;
+id形态表示参数“foo”可以是任何类的实例
+
+- setMyValue:(id <aProtocol>) foo;
+id<aProtocol>表示“foo”可以是任何类的实例，但必须采纳“aProtocol”协议。
+
+- setMyValue:(NSNumber*) foo;
+该声明表示“foo”必须是“NSNumber”的实例。
+
+但在Objective-C中，你可以对id发送任何消息（id很像void*，但是被严格限制只能使用在对象上），
+编译器仅会发出“该对象可能无法回应消息”的警告，程序可以通过编译，
+而实际发生的事则取决于运行期该对象的真正形态，若该对象的确可以回应消息，则依旧运行对应的方法。

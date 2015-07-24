@@ -1,0 +1,1 @@
+https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVCaptureDevice_Class/index.html#//apple_ref/occ/cl/AVCaptureDevice

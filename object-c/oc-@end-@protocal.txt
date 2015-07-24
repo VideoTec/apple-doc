@@ -1,0 +1,35 @@
+在Object-C中，Protocol被用来定义一组独立于具体类的属性和方法，
+其不具体实现这些方法，任何类都可以实现Protocol，Protocol可以继承另一个Protocol，
+从特征上看Protocol的作用类似于Java世界的接口。 
+
+----------------------------
+定义接口
+----------------------------
+@protocol MyProtocol <NSObject>
+// list of methods and properties
+@end
+
+----------------------------
+接口继承
+----------------------------
+@protocol A
+     -(void)methodA;
+@end
+@protocol B <A>
+     -(void)methodB;
+@end
+
+----------------------------
+实现接口
+----------------------------
+@interface MyClass : NSObject <MyProtocol, AnotherProtocol, YetAnotherProtocol>
+...
+@end
+
+
+----------------------------
+使用接口声明变量
+----------------------------
+UITableView的代码中，dataSource属性的定义是这个样子的
+
+id <UITableViewDataSource>  _dataSource;

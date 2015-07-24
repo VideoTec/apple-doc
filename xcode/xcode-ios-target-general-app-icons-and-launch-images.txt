@@ -1,0 +1,48 @@
+参考
+E:\doc\Computer software\MAC&iOS平台\xcode\xcode-ios-InterfaceBuilder-xib-LaunchScreen.xib.txt
+E:\doc\Computer software\MAC&iOS平台\xcode\xcode-ios-images.xcassets.txt
+
+http://www.simpleapples.com/2014/10/launchsreen-and-launchimage/
+App Icons and Launch Images，
+Xcode6中默认使用了LaunchScreen.xib，而LaunchImage则没有使用
+
+点击Use Assets Catelog，
+这时Xcode会在Images.xcassets中生成LaunchImage，
+这里我们只需要给4寸Retina屏和3.5寸2x屏放两张LaunchImage就好了
+
+iOS8中系统会优先调用LaunchScreen作为启动界面，而
+iOS7不支持LaunchScreen则会使用LaunchImage中的图片作为启动界面
+
+11:30 2015/6/30
+asset catalog complier error
+the lauch image set named "LauchImage" did not have any applicable content.
+http://stackoverflow.com/questions/19484948/ios-launch-screen-asset-catalog-not-working
+Search for LaunchImage keyword in your .plist file and delete it. 
+Then, try assigning the image again by dragging as you already did before...
+最后找到原因是，图片大小的问题。改成两个 640x960px 的图片，编译就通过了。
+
+640x960 dimensioning in iPhone Portrait iOS7 2x
+640x1136 dimensioning in iPhone Portrait iOS 7 R2
+
+http://stackoverflow.com/questions/23419500/what-is-the-difference-between-2x-and-r4-launch-screens-in-xcode
+What do I do here, what is the difference between 2x and R4 launch images? 
+Are they different resolutions, I made one with 640 x 1136 and it turns into an R4.
+
+图片大小参考
+http://www.idev101.com/code/User_Interface/launchImages.html
+http://www.ios-developer.net/iphone-ipad-programmer/icons_and_graphics/default-image
+http://stackoverflow.com/questions/20899000/iphone-launch-image-for-a-landscape-based-application
+"@2x" (640x960) and "R4" (640 x1136)
+
+pre iPhone5
+Default.png (320x480px) – "iPhone Portrait iOS5,6 – 1x"
+Default@2x.png (640x960px) – "iPhone Portrait iOS5,6 – 2x" and  "iPhone Portrait iOS7,8 – 2x"
+
+iPhone5
+Default-568h@2x.png (640x1136px) – "iPhone Portrait iOS5,6 – Retina 4" and "iPhone Portrait iOS7,8 – Retina 4"
+
+iPhone 6
+Default-iPhone6.png (750 x 1334) – "iPhone Portrait iOS8 – Retina HD 4.7"
+
+iPhone 6 Plus
+Default-iPhone6Plus.png (1242 x 2208) – "iPhone Portrait iOS8 – Retina HD 5.5" and "iPhone Landscape iOS8 – Retina HD 5.5"

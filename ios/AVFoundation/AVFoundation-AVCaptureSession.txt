@@ -1,0 +1,1 @@
+https://developer.apple.com/library/ios/documentation/AVFoundation/Reference/AVCaptureSession_Class/index.html#//apple_ref/occ/cl/AVCaptureSession

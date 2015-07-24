@@ -1,0 +1,29 @@
+Many view behaviors can be configured without the need for subclassing. 
+Before you start overriding methods, 
+consider whether modifying the following properties or behaviors would provide the behavior you need.
+
+1）addConstraint: - Define automatic layout behavior for the view and its subviews.
+
+1）autoresizingMask - Provides automatic layout behavior when the superview’s frame changes. These behaviors can be combined with constraints.
+
+1）contentMode - Provides layout behavior for the view’s content, as opposed to the frame of the view. This property also affects how the content is scaled to fit the view and whether it is cached or redrawn.
+
+1）contentStretch - Defines portions of the view as being stretchable. This behavior is typically used to implement buttons and other resizable views with sophisticated layout needs where redrawing the view every time would affect performance.
+
+1）hidden or alpha - Change the transparency of the view as a whole rather than hiding or applying alpha to your view’s rendered content.
+
+1）backgroundColor - Set the view’s color rather than drawing that color yourself.
+
+1）Subviews - Rather than draw your content using a drawRect: method, embed image and label subviews with the content you want to present.
+
+1）Gesture recognizers - Rather than subclass to intercept and handle touch events yourself, you can use gesture recognizers to send an action message to a target object.
+
+1）Animations - Use the built-in animation support rather than trying to animate changes yourself. The animation support provided by Core Animation is fast and easy to use.
+
+1）Image-based backgrounds - For views that display relatively static content, consider using a UIImageView object with gesture recognizers instead of subclassing and drawing the image yourself. Alternatively, you can also use a generic UIView object and assign your image as the content of the view’s CALayer object.
+
+Animations are another way to make visible changes to a view 
+without requiring you to subclass and implement complex drawing code. 
+Many properties of the UIView class are animatable, 
+which means changes to those properties can trigger system-generated animations. 
+Starting animations requires as little as one line of code to indicate that any changes that follow should be animated. 

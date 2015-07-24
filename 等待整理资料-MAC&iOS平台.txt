@@ -1,0 +1,1000 @@
+CMSampleBufferGetAudioBufferListWithRetainedBlockBuffer
+need to introspect into the opaque CMBlockBuffer structure to find its raw sample buffers.
+
+
+
+mac open .
+打开资源库，文件夹的方法：
+open .
+
+
+
+
+object-c create a file & nsstring to nsdata
+#import <Foundation/Foundation.h>
+    int main(int argc, const char * argv[])
+    {
+    @autoreleasepool {
+    NSData *data=[@"Hello,I Love China" dataUsingEncoding:NSUTF8StringEncoding];
+    NSString *path=@"/Users/hehehe/Desktop/002";
+    NSFileManager *manager=[NSFileManager defaultManager];
+    [manager createFileAtPath:path contents:data attributes:nil];//创建文件
+    }
+    return 0;
+    }
+	
+	
+	
+	
+	
+	
+	NSString <-> NSURL
+	NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+
+unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
+
+NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+
+
+NSString * urlStr = [url absoluteString];
+
+NSURL * url = [NSURL URLWithString:urlStr];
+NSURL * url = [[NSURL alloc] initWithString:urlStr];
+
+
+
+
+
+
+
+
+
+
+xcode project add video resource
+xcode里，添加视频资源文件，
+xcode: Project and Target, add resources to target?
+
+For your target->Build Phases->Copy Bundle Resources, you can add resources to the target.
+
+Click on the file/resource in project navigator, under "Utility View"->Target Membership, you can select/deselect the targets that need to include/remove this file/resource.
+
+左击工程，add files to "testproject" ...
+选中，向target中添加资源文件。
+
+资源文件会，打包在，TestApp程序文件中。
+
+
+
+
+
+
+
+
+unlink([filePath fileSystemRepresentation])
+Try using unlink([filePath fileSystemRepresentation]);, that is the POSIX way to remove a file.
+
+
+
+
+
+
+NSURL NSBundle  URLForResource   pathForResource
+NSURL *modelURL = [[NSBundle mainBundle] URLForResource:@"CoreDataApp" withExtension:@"momd"];
+
+NSURL *aFileURL = [NSURL fileURLWithPath: [[NSBundle mainBundle]  pathForResource:path ofType:@"aif"]];
+
+
+
+
+
+
+
+如何将NSstring转欢成char （UTF8String, cString）
+[NSString stringWithUTF8String:"TEST"];
+
+char *s;
+NSString *str;
+s=[str UTF8String];
+
+str=[NSString stringWithUTF8String:s];
+str=[NSString stringWithFormat:@"%s",s];
+
+
+
+
+
+loadValuesAsynchronouslyForKeys
+[inputAsset loadValuesAsynchronouslyForKeys:[NSArray arrayWithObject:@"tracks"] completionHandler: ^{
+        NSError *error = nil;
+        AVKeyValueStatus tracksStatus = [inputAsset statusOfValueForKey:@"tracks" error:&error];
+        if (tracksStatus != AVKeyValueStatusLoaded)
+        {
+            return;
+        }
+        blockSelf.asset = inputAsset;
+        [blockSelf processAsset];
+        blockSelf = nil;
+    }];
+
+同步调用方法是：
+- (NSArray *)tracksWithMediaType:(NSString *)mediaType
+You can call this method without blocking when the data in the tracks (page 15) property is already loaded.
+
+[self.asset tracksWithMediaType:AVMediaTypeVideo]
+
+
+
+
+
+
+
+
+
+
+
+NSArray
+NSArray *tracks = [asset tracksWithMediaType:AVMediaTypeVideo];
+NSString *mediaType = [[tracks objectAtIndex:0] mediaType];
+注意最后一句，不需要强制类型转换，如下：
+(AVAssetTrack *)[tracks objectAtIndex:0]
+
+附：第一次这样写时出错，原因是没有包含头文件:
+#import <AVFoundation/AVAssetTrack.h>
+
+
+
+
+
+
+
+
+AVAssetReaderTrackOutput pixel format
+AVAssetReaderTrackOutput pixel format 
+CVPixelBufferPixelFormatTypeKey
+
+32RGBA     不能用
+32BGRA     能用
+
+420 Bi-Planar Full Range  能用
+420 Bi-Planar Video Range 能用
+
+420 Planar Full Range 不能用
+420 Planar 能用
+
+
+
+
+
+
+
+
+
+讲下，xcode，界面
+xcode product->destination->iOS Device / iOS Simulator
+在调试程序的时候，忽然不能正常运行了，提示，输入开发者账号。
+原因是，上面这个菜单选择了，iOS Device
+
+
+
+
+
+
+AVTracks mediaType
+AVMediaTypeVideo
+AVMediaTypeAudio
+AVMediaTypeSubtitle
+.....
+
+
+
+
+
+
+
+
+NSArray & NSDictionary initialize
+NSArray* array = @[
+  @"This",
+  @"is",
+  @"an",
+  @"array"
+];
+
+NSDictionary* option1 = @{
+  NSFontAttributeName : [NSFont fontWithName:@"Helvetica-Bold" size:12],
+  NSForegroundColorAttributeName : fontColor
+};
+
+NSDictionary* option2 = @{
+  NSFontAttributeName :            [NSFont fontWithName:@"Arial" size:12],
+  NSForegroundColorAttributeName : fontColor
+};
+
+Objective-C可以简化代码如下： 
+NSDictionary *bookListing = {key1 : object1, key2 : object2, key3 : object3}; 
+和数组一样，下标可用来访问字典项，如下使用key1下标来访问bookListing字典对象： 
+bookObject = bookListing[key1]; 
+相同地，如下代码可更新bookListing字典对象中key2键所对应的对象值： 
+bookListing[key2] = newBookObject; 
+和NSArray数组一样，使用上述语法定义的字典对象默认是不可变的。
+iOS 6 SDK内置的Objective-C 编译器包含了大量的改进，可简化代码的阅读和减少开发人员输入代码量，为开发人员节省了不少时间
+
+
+
+
+
+
+
+
+readerVideoTrackOutput.alwaysCopiesSampleData = NO;
+Maybe set alwaysCopiesSampleData to NO on iOS 5.0 for faster video decoding
+
+
+
+
+
+
+
+
+
+
+object-c exception
+NSException *e = [SomeOverException  自定异常类
+                           exceptionWithName: @"BoxOverflowException" 
+                                                      reason: @"The level is above 100"                            
+                                                    userInfo: nil];         
+ @throw e; 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ object-c ivars means instance variable
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ xcode workspace *.xcworkspace
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ copyNextSampleBuffer
+ copyNextSampleBuffer返回值是否为nil来判断流是否读到头了
+ 
+ 
+ 
+ 
+ 
+ 
+ 第一步：先假设你可以把su放在xbin下
+
+第二步：改变SU文件的权限：
+就把一个所有者是root的su程序权限标志位置成-rwsr-xr-x，那么不管谁执行它，都是root身份执行，su就可以顺利执行成功了，执行成功之后我就是root身份了
+
+
+
+
+
+
+
+
+
+
+
+dispatch_semaphore_t
+dispatch_semaphore_t g_pause_signal_ = dispatch_semaphore_create(0);
+
+
+dispatch_semaphore_signal(  g_pause_signal_);
+
+
+dispatch_semaphore_wait(g_pause_signal_, DISPATCH_TIME_FOREVER);
+
+
+
+
+
+
+
+
+
+
+AVAsset 奇怪行为
+AVAsset 
+
+AVAssetWriter 写已经存在的文件，或者，没操作无写权限的路径时，
+在初始化时不会失败，总是后续，调用，出现一些奇怪问题。
+
+
+
+
+
+
+
+
+
+IOS模拟器，真机，区别
+文件读写权限：
+模拟器可以在app包里写文件，真机不行。（AVAssetWriter 时发现的）
+
+AVAsset，进入后台，重新到前台时，区别：
+模拟器：运行正常
+真机：copyNextSampleBuffer 总是返回nil
+
+
+
+
+
+
+
+
+
+
+NSNotificationCenter
+注册观察者
+[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(notifyEdited:) name:@"NOTIFY_EDITED" object:nil];
+
+
+
+- (void)dealloc
+
+{
+
+//移除观察者
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+
+}
+
+
+
+
+
+发送消息
+[[NSNotificationCenter defaultCenter] postNotificationName:@"NOTIFY_EDITED" object:self];
+发送消息时出错：是因为，某个观察都，对象已经删除，但是未调用removeObserver函数。
+
+
+回调函数
+-(void)enterBackgroup:(id)target
+
+{
+
+    NSLog(@"enterBackgroup");
+
+    if(_render!=NULL)
+
+    {
+
+        _render->Pause();
+
+      
+
+        if (dispatch_semaphore_wait(_enterBackground, DISPATCH_TIME_NOW) != 0)
+
+        {
+
+            return;
+
+        }
+
+    }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+copyNextSampleBuffer after application returns from background on iPhone
+copyNextSampleBuffer after application returns from background on iPhone
+
+
+
+
+
+
+
+
+
+
+xcode 新建文件向导
+oc class
+oc category
+oc protocal
+oc class extension
+oc test case class
+
+
+
+
+
+
+
+
+
+
+
+cvpixelbufferpoolcreatepixelbuffer
+cvpixelbufferpoolcreatepixelbuffer 
+在模拟器上运行正常，
+在设备上运行，创建buffer失败。
+
+输出路径问题，（输出到*.app包里，模拟器可以运行）
+
+
+
+NSMutableDictionary * outputSettings
+    = [[NSMutableDictionary alloc] init];
+[outputSettings setObject: AVVideoCodecH264
+                   forKey: AVVideoCodecKey];
+[outputSettings setObject: [NSNumber numberWithInt: width_]
+                   forKey: AVVideoWidthKey];
+[outputSettings setObject: [NSNumber numberWithInt: height_]
+                   forKey: AVVideoHeightKey];
+
+NSMutableDictionary * compressionProperties
+    = [[NSMutableDictionary alloc] init];
+[compressionProperties setObject: [NSNumber numberWithInt: 1000000]
+                          forKey: AVVideoAverageBitRateKey];
+[compressionProperties setObject: [NSNumber numberWithInt: 16]
+                          forKey: AVVideoMaxKeyFrameIntervalKey];
+[compressionProperties setObject: AVVideoProfileLevelH264Main31
+                          forKey: AVVideoProfileLevelKey];
+
+[outputSettings setObject: compressionProperties
+                   forKey: AVVideoCompressionPropertiesKey];
+
+AVAssetWriterInput * writerInput = [AVAssetWriterInput
+    assetWriterInputWithMediaType: AVMediaTypeVideo
+                   outputSettings: outputSettings];
+
+[compressionProperties release];
+[outputSettings release];
+
+
+
+
+
+
+
+
+
+
+
+
+
+NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.mp4"];
+
+    NSURL *movieURL = [NSURL fileURLWithPath:pathToMovie];
+
+    unlink([[movieURL path] UTF8String]);
+
+
+
+
+
+
+
+
+UIImage *filterCurveImage 加载路径
+UIImage *filterCurveImage = [UIImage imageNamed:@"earlyBirdCurves.png"];
+
+只在工程里添加了，但是没有在Build Phases设置里添加，图片文件。
+这种情况下，模拟器可以正常运行，但是真机不能。
+
+具体原因，不明。需要再了解。
+
+
+
+
+
+
+
+
+
+Convert an UIImage in a texture
+UIImage* image = [UIImage imageNamed:@"imageToApplyAsATexture.png"];
+CGImageRef imageRef = [image CGImage];
+int width = CGImageGetWidth(imageRef);
+int height = CGImageGetHeight(imageRef);
+
+GLubyte* textureData = (GLubyte *)malloc(width * height * 4); // if 4 components per pixel (RGBA)
+
+CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
+NSUInteger bytesPerPixel = 4;
+NSUInteger bytesPerRow = bytesPerPixel * width;
+NSUInteger bitsPerComponent = 8;  
+CGContextRef context = CGBitmapContextCreate(textureData, width, height,
+                                             bitsPerComponent, bytesPerRow, colorSpace,
+                                             kCGImageAlphaPremultipliedLast | kCGBitmapByteOrder32Big);
+
+CGColorSpaceRelease(colorSpace);
+
+CGContextDrawImage(context, CGRectMake(0, 0, width, height), imageRef);
+CGContextRelease(context);
+
+
+GLuint textureID;    
+glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
+glGenTextures(1, &textureID);
+
+glBindTexture(GL_TEXTURE_2D, textureID);
+glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, textureData);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+AVAssetWriterInput readyForMoreMediaData
+AVAssetWriterInput readyForMoreMediaData  总是NO，
+
+while (adaptor.assetWriterInput.readyForMoreMediaData == FALSE) {
+  NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:0.1];
+  [[NSRunLoop currentRunLoop] runUntilDate:maxDate];
+}
+
+Invoking runUntilDate on the run loop is not the same as sleeping. The run loop can do other things, like respond to async IO becoming ready or NSNotification delivery. The point here is that the readyForMoreMediaData flag could be getting set by one of the run loop operations, which seems to be what was going on with the iPad2.
+
+
+If you’re writing media data from a non-real-time source, such as an instance of AVAssetReader, 
+
+you should hold off on generating or obtaining more media data to append to an input when the value of readyForMoreMediaData is NO. 
+
+To help with control of the supply of non-real-time media data, 
+you can userequestMediaDataWhenReadyOnQueue:usingBlock: 
+to specify a block that the input should invoke 
+whenever it’s ready for input to be appended.
+
+
+
+
+
+
+
+
+
+AVAssetWriter 
+startSessionAtSourceTime
+endSessionAtSourceTime
+
+开始写入数据前，必须要先调用下面这个函数。
+[videoWriter startSessionAtSourceTime:kCMTimeZero]; 
+
+
+
+
+*.m  *.mm
+*.m  按C编译器
+*.mm 按c++编译器
+
+如果 void test();
+
+*.m test ->>> _test
+*.mm test ->> 按C++方式，改
+
+
+
+
+
+
+
+
+
+
+GCD中有三种队列类型
+The main queue: 与主线程功能相同。
+实际上，提交至main queue的任务会在主线程中执行。
+main queue可以调用dispatch_get_main_queue()来获得。
+因为main queue是与主线程相关的，所以这是一个串行队列。
+
+Global queues: 全局队列是并发队列，并由整个进程共享。
+进程中存在三个全局队列：高、中（默认）、低三个优先级队列。
+可以调用dispatch_get_global_queue函数传入优先级来访问队列。
+
+用户队列: 
+用户队列
+ (GCD并不这样称呼这种队列, 
+但是没有一个特定的名字来形容这种队列，
+所以我们称其为用户队列) 是用函数 dispatch_queue_create 创建的队列. 
+这些队列是串行的。
+正因为如此，它们可以用来完成同步机制, 有点像传统线程中的mutex。
+
+
+
+
+
+
+
+
+
+
+
+
+
+assetReaderTrackOutputWithTrack outputSettings
+assetReaderTrackOutputWithTrack outputSettings参数，应该怎么设置？
+assetWriterInputWithMediaType  outputSettings 应该怎么设置？
+
+
+AVChannelLayoutKey
+
+Key to retrieve channel layout information for playback.
+
+NSString *const AVChannelLayoutKey;
+
+Constants
+AVChannelLayoutKey
+The corresponding value is an NSData object 
+containing an AudioChannelLayout structure.
+
+Available in iOS 4.0 and later.
+Declared in AVAudioSettings.h.
+
+[ NSData dataWithBytes: &acl length: sizeof( acl ) ]
+
+
+
+
+
+
+
+
+下面错误的原因是，解码的时候，
+
+
+_audio_track_output =
+
+            [AVAssetReaderTrackOutput
+
+                assetReaderTrackOutputWithTrack:audio_tracks[0]
+
+                                 outputSettings:nil; 
+
+这里赋值为了nil，得到的sample就是未解码的数据。
+
+可能通过设置，输出的编码格式，可能得到，解码后的PCM数据
+
+_audio_track_output =
+
+            [AVAssetReaderTrackOutput
+
+                assetReaderTrackOutputWithTrack:audio_tracks[0]
+
+                                 outputSettings:@{AVFormatIDKey: @(kAudioFormatLinearPCM)}];
+
+
+
+
+
+appendSampleBuffer:] Input buffer must be in an uncompressed format when outputSettings is not nil'
+
+*** First throw call stack:
+
+(
+
+	0   CoreFoundation                      0x01b705e4 __exceptionPreprocess + 180
+
+	1   libobjc.A.dylib                     0x004378b6 objc_exception_throw + 44
+
+	2   AVFoundation                        0x0191ec3d -[AVFigAssetWriterTrack addSampleBuffer:error:] + 311
+
+	3   AVFoundation                        0x0191fcfd -[AVFigAssetWriterAudioTrack addSampleBuffer:error:] + 386
+
+	4   AVFoundation                        0x0191bf2d -[AVAssetWriterInputWritingHelper appendSampleBuffer:] + 97
+
+	5   AVFoundation                        0x01919c8f -[AVAssetWriterInput appendSampleBuffer:] + 69
+
+	6   TestEmpty                           0x00004110 -[FMediaTarget pushAudioSample:] + 112
+
+	7   TestEmpty                           0x000024ee main + 1070
+
+	8   libdyld.dylib                       0x02a63701 start + 1
+
+)
+
+
+
+GCD基于work unit而非像thread那样基于运算
+GCD可以控制诸如等待任务结束、监视文件描述符、周期执行代码以及工作挂起等任务。
+基于block的血统导致它能极为简单得在不同代码作用域之间传递上下文
+
+GCD易用的原因有一部分在于你可以不用担心太多的效率问题而仅仅使用它就行了
+
+GCD自动根据系统负载来增减线程数量，这就减少了上下文切换以及增加了计算效率
+
+
+注意下面，工作与主线程的通信方式 （向主线程分配”工作“）
+dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{       // 耗时的操作       dispatch_async(dispatch_get_main_queue(), ^{           // 更新界面       });   }); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+不再使用锁（Lock）
+NSLock *lock;  使用GCD，可以使用queue来替代
+
+
+要用于同步机制，queue必须是一个用户队列，而非全局队列，
+所以使用  dispatch_queue_create  初始化一个。
+
+然后可以用dispatch_async 或者 dispatch_sync将共享数据的访问代码封装起来
+
+
+
+
+
+
+
+
+
+
+
+
+
+NSRunLoop currentRunLoop
+//    while (!_video_track_input.readyForMoreMediaData) {
+
+//        NSDate *maxDate = [NSDate dateWithTimeIntervalSinceNow:0.5];
+
+//        [[NSRunLoop currentRunLoop] runUntilDate:maxDate];
+
+//    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+requestMediaDataWhenReadyOnQueue
+[AVAssetWriterInput requestMediaDataWhenReadyOnQueue:usingBlock:] 
+cannot be called more than once.
+
+
+
+
+
+
+
+
+
+
+
+
+GLKView
+enableSetNeedsDisplay
+
+If your application uses a GLKViewController object to drive the rendering loop, the view controller automatically sets this property to NO.
+
+When updating your contents in a rendering loop, the normal on-demand mechanism for view updates can be disabled by setting the value of this property to NO
+
+
+下面两个函数的功能？
+bindDrawable
+display
+
+
+
+
+
+
+
+
+
+
+ipod touch id
+6422bca7b23804468f007ad58b2a4e189c67ff21
+
+两个证书
+cosx_dev.p12  
+cosx_all_dev.mobileprovision
+
+证书名称
+iPhone Developer:quanlan huang(7VQ235767S)
+
+1. 安装后，运行程序时选择：IOS设备
+
+2. Build Settings 里，找到 Deployment里的，iOS Deployment Target，
+    选择，设备对应的iOS版本。
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	[_audio_track_input requestMediaDataWhenReadyOnQueue:_writeAudioQueue usingBlock:^{
+	[_audio_track_input requestMediaDataWhenReadyOnQueue:_writeAudioQueue usingBlock:^{
+     只在设置后，回调一次，之后就不再回调了，为什么？
+}
+
+
+近十个小时，解决这个问题，仅仅因为两行代码。
+当输出文件，已经存在，会出现这个问题：
+_writer = [AVAssetWriter assetWriterWithURL:outputURL fileType:outputFileType error:&error];
+
+下面来自GPUImage中的代码
+NSString *pathToMovie = [NSHomeDirectory() stringByAppendingPathComponent:@"Documents/Movie.m4v"];
+
+    unlink([pathToMovie UTF8String]); // If a file already exists, AVAssetWriter won't let you record new frames, so delete the old movie
+
+
+
+
+ AVAssetWriter will not write to an existing file
+ I'm pretty sure there isn't a way to get the AVAssetWriter mux to append to an existing file
+
+
+下面是来自，SDK，例子中的代码
+        if ([[NSFileManager defaultManager] fileExistsAtPath:[outputFileURL path]])
+
+            [[NSFileManager defaultManager] removeItemAtURL:outputFileURL error:NULL];
+
+        
+
+        FMediaTarget *target =
+
+            [[FMediaTarget alloc] initWithURL:outputFileURL fileType:AVFileTypeMPEG4];
+
+
+
+			
+			
+			
+			
+			
+			
+			
+			@property(nonatomic) BOOL expectsMediaDataInRealTime
+			 If you are appending media data to an input from a real-time source, such as an AVCaptureOutput, you should set expectsMediaDataInRealTime to YES. This will ensure that readyForMoreMediaData is calculated appropriately for real-time usage.
+You cannot set this property after writing has started.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CMTimer CMSampleBufferRef
+CMSampleBufferGetDecodeTimeStamp
+CMSampleBufferGetDuration
+CMSampleBufferGetPresentationTimeStamp
+CMSampleBufferGetSampleTimingInfo
+CMSampleBufferGetSampleTimingInfoArray
+
+
+CMSampleBufferGetOutputDecodeTimeStamp
+CMSampleBufferGetOutputDuration
+CMSampleBufferGetOutputPresentationTimeStamp
+CMSampleBufferGetOutputSampleTimingInfoArray
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CMSampleBufferCreate
+CMSampleTimingInfo timing = { CMTimeMakeWithSeconds(1 / 44100.0, 1), kCMTimeZero, kCMTimeInvalid };
+
+
+CMSampleBufferCreate(
+kCFAllocatorDefa
+ult, NULL, false, NULL, NULL, 
+format, numberOfFrames, 1, &timing, 0, NULL, &buff);
+
+
+
+CVPixelBufferCreateWithBytes
+CVPixelBufferCreateWithBytes 不会创建BYTES的副本。
+
+
+
+
+
+
+
+CVPixelIsPlanar
+32BGRA  :
+CVPixelIsPlanar 返回FALSE
+CVPixelBufferGetHeightOfPlane(ref, indexPlane); 返回0
+
+
+
+
+
+
+
+
+
+
+malloc-error-image-data.png
+CMSampleBufferGetImageBuffer
+CMSampleBufferGetImageBuffer 获取的32BGRA图片，最下面有杂色。图像不完整。
+
+
+    if(width_ && height_) {
+
+        image_buffer_ = (unsigned char *)malloc(width_ * height_ * 4 + 1024);
+
+    }
+
+    pcm_buffer_ = (unsigned char *)malloc(2 * 2 * 5000);
+
+
+使用 alloca 造成上面错误。

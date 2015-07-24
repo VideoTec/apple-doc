@@ -1,0 +1,23 @@
+参考 
+D:\CoreSDK\trunk\CVConverter\LEAppDelegate.m
+
+http://www.vpn4ch.com/blog/?tag=xib
+
+1. main.m中指定Delegate， 而不是让框架加载NIB资源
+
+2. 编译Delegagte的 didFinishLaunchingWithOptions 方法， 不要让View从NIB中生成
+
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    _window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    //_window.rootViewController =
+    _window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
+    return YES;
+}
+
+
+
+3. 删除工程中的XIB文件(如果有的话)
+4. 清理plist中的Mainnibfile basename描述(如果有的话)
+5. 删除代码中的IBOutlet关键字
+(如果不做删除应用程序也不会有任何问题，IBOutlet关键字是Interface Builder识别插座变量的标志，留在程序中也没有任何意义)

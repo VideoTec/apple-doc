@@ -1,0 +1,11 @@
+http://stackoverflow.com/questions/6076911/make-xcode-4-stop-auto-staging-with-git
+
+ Actually, I don't think it auto-adds. I think it always does commit -a. 
+ Looking at git status on the command line shows me many new and modified files that are NOT staged. 
+ But I'm sure if I committed with Xcode they'd all end up in that commit.
+ 
+http://stackoverflow.com/questions/6378692/how-do-i-stop-xcode-4-from-modifying-a-local-git-repository/6378745#6378745
+
+For those having this problem and using xcode 6 its much easier.
+Preferences -> Source Control
+and then uncheck "Enable Source Control" or just uncheck add and "Remove files automatically".
